@@ -1,0 +1,362 @@
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@plugin "flowbite-react/plugin/tailwindcss";
+@source "../.flowbite-react/class-list.json";
+@theme {
+  --color-studio-page: #f7f5f1;
+  --color-studio-paper: #ffffff;
+  --color-studio-ink: #28362e;
+  --color-studio-forest: #254b3a;
+  --color-studio-forest-dark: #1d3c2e;
+  --color-studio-muted: #768075;
+  --color-studio-line: #deddd8;
+  --color-studio-soft: #e8efe5;
+  --color-studio-coral: #a95f50;
+}
+*{box-sizing:border-box}body{margin:0;background:#f6f5f0;color:#28362e;font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:1.8}button,input,textarea{font:inherit}button,a,input,textarea{outline-offset:4px}button{cursor:pointer;border:1px solid #dcded6;background:#fff;color:#33483b;padding:9px 16px;border-radius:7px;transition:background .15s}button:hover{background:#e9ede5}button:disabled{opacity:.45;cursor:wait}a{color:inherit;text-decoration:none}.primary{background:#294b3b;color:white;border-color:#294b3b}.primary:hover{background:#1e382b}.shell{display:flex;min-height:100vh}aside{width:245px;background:#fcfcf8;border-left:1px solid #e3e4dc;padding:32px 20px;flex-shrink:0;display:flex;flex-direction:column}.logo{font:italic 34px Georgia;direction:ltr;text-align:center;margin-bottom:45px}.logo span{font:14px Georgia;color:#8b968b}.aside-label,.section-label{color:#899084;font-size:11px;letter-spacing:.3px}.aside-label{margin:0 12px 16px}aside>button,aside section>button{width:100%;text-align:right;background:transparent;border:0;margin:3px 0;padding:11px 14px}aside .selected{background:#eaf0e6;color:#264633;font-weight:bold}.section-label{display:flex;align-items:center;justify-content:space-between;padding:24px 12px 5px}.section-label button{border:0;background:transparent;font-size:20px;padding:0 5px}.dot{float:left;color:#99a68f;font-size:10px}.aside-bottom{margin-top:auto;padding:40px 12px 0;font-size:12px;color:#75816e}.aside-bottom small{display:block;color:#a0a797;margin-top:8px}.live-dot{display:inline-block;width:7px;height:7px;background:#648a5a;border-radius:50%;margin-left:6px}.workspace{min-width:0;flex:1}header{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:28px 42px;border-bottom:1px solid #e4e5dd;background:#fbfbf7}h1{font-size:23px;margin:4px 0;font-weight:500}.breadcrumb{font-size:11px;color:#92988b}.actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.actions a{font-size:12px;margin-left:8px}main{max-width:1240px;margin:auto;padding:24px 42px}h2{font-size:19px;font-weight:500}.status{font-size:12px;min-height:30px;color:#707c69;margin-bottom:16px;overflow-wrap:anywhere}.welcome{border:1px solid #dfe4d5;background:#edf0e5;border-radius:12px;padding:38px 42px;display:flex;justify-content:space-between;gap:20px;overflow:hidden}.welcome h2{font-size:35px;line-height:1.7;margin:12px 0}.welcome p{font-size:13px;color:#7c8475;margin-bottom:24px}.eyebrow{font:10px Arial;letter-spacing:2px;color:#7a8970}.art{position:relative;min-width:220px;width:35%;display:flex;flex-direction:column;align-items:center;justify-content:center}.arch{width:175px;height:245px;border-radius:100px 100px 4px 4px;background:linear-gradient(120deg,#b6c1a2,#7c8e6c);box-shadow:28px 18px 0 #dde2d0;transform:rotate(-7deg)}.art>span{position:absolute;color:#f1f1dd;font:italic 52px Georgia;transform:rotate(-7deg);top:40%}.art small{font:8px Arial;letter-spacing:3px;position:absolute;bottom:0}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:24px 0 32px}.stats article{border:1px solid #e0e3d9;border-radius:10px;padding:20px 25px;background:#fdfdf9;display:flex;justify-content:space-between;align-items:center}.stats small{color:#87917f}.stats strong{font-size:28px;font-weight:400}.list-heading{display:flex;justify-content:space-between;align-items:center;gap:20px}.list-heading>span{font-size:11px;color:#8e9687}.project-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}.project-card{text-align:right;padding:0 0 18px;overflow:hidden;background:#fcfcf7;border-color:#e0e3d8;border-radius:10px}.project-card h3,.project-card p,.project-card>small{margin:12px 22px}.project-card h3{font-weight:500;font-size:17px}.project-card p{font-size:12px;color:#8b9282}.project-card>small{font-size:10px;color:#6e805e}.project-art{height:160px;background:linear-gradient(140deg,#d7cbb6,#c3c9b7);display:flex;align-items:end;padding:20px;font:11px Georgia;letter-spacing:2px;color:#6d725f}.project-art.tone1{background:linear-gradient(130deg,#d3d9cf,#a8b6a6)}.project-art img{width:100%;height:100%;object-fit:cover}.project-art:has(img){padding:0}.panel{background:#fdfdf9;border:1px solid #e0e3d9;border-radius:12px;padding:26px 30px;margin-bottom:22px}label{display:block;margin:16px 0;font-size:12px;color:#6b7862}input:not([type=checkbox]):not([type=file]),textarea{width:100%;display:block;border:1px solid #daddd1;background:white;border-radius:6px;padding:11px 12px;color:#263b2c;margin-top:7px}textarea{resize:vertical}.check{display:flex;gap:10px;align-items:center}.danger{color:#a35343;border-color:#e4d7ce;font-size:12px}.hint{font-size:12px;color:#929987}.upload{border:1px dashed #b6c2aa;padding:22px;text-align:center;border-radius:8px;cursor:pointer}.upload input{display:block;margin:10px auto;max-width:100%}.media-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.media-grid article{border:1px solid #e0e3d9;padding:12px;border-radius:8px}.media-grid img{width:100%;height:190px;object-fit:contain;background:#eee}.loading{padding:70px}footer{border-top:1px solid #e0e3d9;margin-top:45px;padding:24px 0;color:#929b87;font-size:11px;display:flex;justify-content:space-between}@media(max-width:1000px){aside{width:200px}header{align-items:start;flex-direction:column}main,header{padding:22px}.welcome{padding:28px}.art{min-width:160px}.arch{width:130px;height:210px}}@media(max-width:700px){.shell{display:block}aside{width:100%;padding:16px}.logo{margin-bottom:15px}aside section{display:inline-block;width:49%;vertical-align:top}.aside-bottom,.aside-label{display:none}.welcome{padding:22px}.welcome h2{font-size:27px}.art{display:none}.stats{gap:8px}.stats article{padding:12px;flex-direction:column}.project-grid,.media-grid{grid-template-columns:1fr}.panel{padding:20px}header{padding:20px}main{padding:16px}footer{gap:20px;flex-wrap:wrap}}
+.preview-state{font-size:11px;color:#a35343}.preview-state.available{color:#54784b}.preview-link-disabled{font-size:12px;color:#9a9e94;cursor:not-allowed}
+.setup-panel{background:#edf0e5;border-color:#cfd8c6}.setup-panel p{color:#727d6b}.backup-upload{display:inline-flex;align-items:center;gap:10px;padding:9px 14px;margin:0}.backup-upload input{max-width:230px;font-size:11px}.original-download{display:inline-block;font-size:12px;color:#42684a;margin:8px 0;text-decoration:underline}
+select{display:block;width:100%;margin-top:7px;padding:11px 12px;border:1px solid #daddd1;border-radius:6px;background:white;color:#263b2c;font:inherit}.publish-panel>p{max-width:760px}.publish-auth{color:#54784b}.publish-panel details{margin:25px 0;padding:18px;border:1px solid #e0e3d9;border-radius:8px}.publish-panel summary{cursor:pointer;font-weight:bold}.publish-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}.verified-url{margin-top:24px;padding:12px;background:#edf0e5;border-radius:8px;overflow-wrap:anywhere}.verified-url a{text-decoration:underline;color:#315b3a;direction:ltr;display:inline-block}.publish-panel .danger{background:#fff9f7}@media(max-width:700px){.publish-actions button{width:100%;min-height:48px}}
+aside .nav-group{margin-top:14px;border-top:1px solid #e7e9e1;padding-top:6px}aside .nav-group summary,.advanced-fields summary{cursor:pointer;list-style:none;min-height:44px;display:flex;align-items:center;justify-content:space-between;padding:8px 12px;color:#56634f;font-size:13px;font-weight:600}aside .nav-group summary::-webkit-details-marker,.advanced-fields summary::-webkit-details-marker{display:none}aside .nav-group summary::before,.advanced-fields summary::before{content:'＋';font-size:15px;margin-left:8px;color:#899582}aside .nav-group[open] summary::before,.advanced-fields[open] summary::before{content:'−'}aside .nav-count{margin-right:auto;margin-left:8px;color:#899582;font-size:11px}aside .nav-group>.nav-add{font-size:12px;color:#42684a;margin:2px 0 4px;padding:8px 12px}.advanced-fields{margin-top:18px;border-top:1px solid #e7e9e1}.advanced-fields summary{justify-content:flex-start;padding-right:0}.status{display:flex;align-items:flex-start;gap:12px;border:1px solid #dfe3d8;border-radius:8px;padding:10px 14px;background:#fbfcf8}.status strong{flex:none;font-size:12px;color:#527147}.status span{font-size:12px;line-height:1.7}.status-dirty{background:#fffaf0;border-color:#e7d9ad}.status-dirty strong{color:#896920}.entry-tools{flex-wrap:nowrap}.entry-tools button{min-width:42px;min-height:42px}
+@media(max-width:700px){aside .nav-group{display:inline-block;vertical-align:top;width:49%;margin-top:8px;padding:4px;border:1px solid #e7e9e1;border-radius:8px}aside .nav-group summary{padding:5px 8px}.nav-group[open]{width:100%}.nav-group>.nav-add{width:100%;text-align:right}header .actions{width:100%;gap:8px}header .actions button{min-height:44px}.preview-state{width:100%}.status{gap:8px;padding:10px 12px}.entry-tools button{min-width:44px;min-height:44px}.advanced-fields summary{min-height:48px}}
+.menu-toggle{display:none}.nav-count{margin-right:auto;margin-left:8px;color:#899582;font-size:11px}.content-list-panel>.list-heading{align-items:center}.content-list-panel>.list-heading .hint{margin:0}.content-list{margin-top:20px}.content-list-item{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:14px 4px;border-top:1px solid #e7e9e1}.content-list-item h3{margin:0;font-size:15px;font-weight:500}.list-item-state,.empty-list{color:#7d8877;font-size:12px}.content-list-item .actions button{min-width:78px}.empty-list{padding:18px 4px}
+aside nav{display:flex;flex-direction:column}aside nav>button{width:100%;min-height:44px;text-align:right;background:transparent;border:0;margin:3px 0;padding:11px 14px}aside nav>.selected{background:#eaf0e6;color:#264633;font-weight:bold}
+@media(max-width:700px){.menu-toggle{display:block;width:calc(100% - 32px);min-height:48px;margin:12px 16px;text-align:right}.shell>aside{display:none}.shell>aside.mobile-open{display:flex;gap:2px}.content-list-panel>.list-heading{align-items:stretch;flex-direction:column}.content-list-item{align-items:stretch;flex-direction:column;gap:10px;padding:16px 0}.content-list-item .actions{display:grid;grid-template-columns:1fr 1fr}.content-list-item .actions button{min-height:48px;width:100%}}
+.main-with-action-bar{padding-bottom:112px}.form-action-bar{position:fixed;z-index:20;left:0;right:245px;bottom:0;display:flex;justify-content:flex-start;align-items:center;min-height:76px;padding:12px 42px calc(12px + env(safe-area-inset-bottom));background:rgba(252,252,248,.97);border-top:1px solid #dfe3d8;box-shadow:0 -6px 18px rgba(40,54,46,.07);backdrop-filter:blur(8px)}.form-action-bar button{min-width:180px;min-height:48px}@media(max-width:1000px){.form-action-bar{right:200px;padding-right:22px;padding-left:22px}}@media(max-width:700px){.form-action-bar{left:0;right:0;min-height:72px;padding:10px 16px calc(10px + env(safe-area-inset-bottom))}.form-action-bar button{width:100%;min-height:50px}.main-with-action-bar{padding-bottom:112px}}
+
+.rich-text-editor{margin:18px 0 24px}.rich-text-editor .ql-toolbar.ql-snow{display:flex;flex-wrap:wrap;gap:4px;border-color:#daddd1;border-radius:6px 6px 0 0;background:#fff}.rich-text-editor .ql-toolbar.ql-snow .ql-picker-label,.rich-text-editor .ql-toolbar.ql-snow .ql-picker-options{direction:ltr;text-align:left}.rich-text-editor .ql-container.ql-snow{height:320px;overflow:hidden;border-color:#daddd1;border-radius:0 0 6px 6px;background:#fff}.rich-text-editor .ql-editor{height:100%;min-height:0;overflow-y:auto;text-align:start;font:inherit;line-height:2}.rich-text-editor .ql-editor .ql-align-left{text-align:left}.rich-text-editor .ql-editor img{max-width:100%;height:auto}.rich-text-editor .ql-editor img[data-placement="wrap-start"],.rich-text-editor .ql-editor img[data-placement="wrap-end"]{display:block;float:inline-start;width:min(42%,360px);margin:.35rem 1rem .5rem 0}.rich-text-editor .ql-editor img[data-placement="wrap-end"]{float:inline-end;margin-inline:1rem 0}.rich-text-editor .ql-editor img[data-placement="block-start"],.rich-text-editor .ql-editor img[data-placement="block-center"],.rich-text-editor .ql-editor img[data-placement="block-end"]{display:block;float:none;max-width:100%;margin-block:.75rem}.rich-text-editor .ql-editor img[data-placement="block-start"]{margin-inline-start:0;margin-inline-end:auto}.rich-text-editor .ql-editor img[data-placement="block-center"]{margin-inline-start:auto;margin-inline-end:auto}.rich-text-editor .ql-editor img[data-placement="block-end"]{margin-inline-start:auto;margin-inline-end:0}.rich-image-properties{margin-top:12px;padding:12px 14px;border:1px solid #daddd1;border-radius:8px;background:#fbfcf8}.rich-image-properties label{margin:0}.rich-image-properties select{display:block;width:100%;margin-top:6px;padding:9px 10px;border:1px solid #daddd1;border-radius:6px;background:#fff;color:#28362e}.rich-image-alt{margin-top:14px;padding:12px;border:1px solid #e0e3d9;border-radius:8px;background:#fff}.rich-image-alt label{margin-top:0}.content-list-excerpt{margin:4px 0;color:#7d8877;font-size:12px;line-height:1.7}
+@media(max-width:700px){.rich-text-editor .ql-editor img[data-placement="wrap-start"],.rich-text-editor .ql-editor img[data-placement="wrap-end"]{width:44%}}@media(max-width:700px){.rich-text-editor .ql-toolbar.ql-snow{padding:6px}.rich-text-editor .ql-toolbar.ql-snow .ql-formats{margin:2px 4px 2px 0}.rich-text-editor .ql-container.ql-snow{height:260px}.rich-text-editor .ql-editor{height:100%;min-height:0}.rich-image-alt .actions button{min-height:44px}}
+
+.v2-media-control{margin:18px 0}.v2-media-control>strong{display:block;margin-bottom:10px}.v2-media-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.v2-media-list article{border:1px solid #e0e3d9;border-radius:8px;padding:12px}.v2-media-list img{width:100%;height:180px;object-fit:contain;background:#eee}.v2-document-block{background:#fbfcf8}.v2-field-definition{padding:16px;margin:12px 0}.v2-category-field{border:1px solid #e0e3d9;border-radius:8px;padding:12px 16px;margin:18px 0}.v2-category-field legend{color:#526249;font-size:13px}.v2-migration-backup{overflow-wrap:anywhere}.v2-migration-backup a{text-decoration:underline;color:#315b3a}
+@media(max-width:700px){.v2-media-list{grid-template-columns:1fr}.v2-field-definition>.list-heading{align-items:stretch;flex-direction:column}.v2-document-block>.list-heading{align-items:stretch;flex-direction:column}.v2-document-block .actions button{min-height:44px}}
+
+.v2-help-tip{position:relative;display:inline-block;vertical-align:middle;margin-inline-start:6px}.v2-help-tip>summary{display:grid;place-items:center;width:24px;height:24px;border:1px solid #a8b1a2;border-radius:50%;color:#45634a;font-weight:700;cursor:pointer;list-style:none}.v2-help-tip>summary::-webkit-details-marker{display:none}.v2-help-tip[open]>div{position:absolute;z-index:30;inset-inline-start:0;top:calc(100% + 8px);width:min(280px,80vw);padding:12px 14px;border:1px solid #daddd1;border-radius:8px;background:#fff;box-shadow:0 8px 24px #263b2c20;font-size:13px;line-height:1.8;color:#36483b}.v2-type-choice{display:grid;grid-template-columns:1fr auto;align-items:center;gap:8px 12px;border:1px solid #daddd1;border-radius:8px;padding:14px 16px;margin:18px 0}.v2-type-choice legend{padding:0 6px;color:#526249;font-size:13px}.v2-type-choice .field-help{grid-column:1/-1}.collection-form>.list-heading{margin-bottom:20px}.field-help{display:block;color:#7d8877;font-size:12px;line-height:1.7;margin-top:5px}.optional{font-size:12px;color:#7d8877}.v2-category-field legend .v2-help-tip{font-weight:400}.auto-excerpt-note{padding:10px 12px;background:#f7f8f3;border-radius:6px}.content-list-item-main{display:flex;align-items:center;gap:14px}.content-list-thumb{width:80px;height:64px;border-radius:5px;object-fit:cover}.content-list-item-main h3{margin:0}.content-list-item .actions{flex-wrap:wrap}.collection-form .actions{margin-top:24px}.cover-from-gallery{margin-top:0}@media(max-width:700px){.v2-type-choice{gap:12px 8px}.v2-type-choice .check{min-height:44px}.content-list-thumb{width:72px;height:60px}.content-list-item-main{align-items:flex-start}}
+.v2-help-tip{display:inline-flex;vertical-align:middle;margin-inline:5px}.v2-help-trigger{width:27px;height:27px;min-height:27px;padding:4px;display:inline-grid;place-items:center;border:0;border-radius:50%;background:#edf2e9;color:#355b43}.v2-help-trigger:hover{background:#dfe9d9}.v2-help-trigger svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}.v2-help-backdrop{position:fixed;inset:0;z-index:1000;background:#1e2c2380;display:grid;place-items:center;padding:20px}.v2-help-dialog{width:min(460px,100%);max-height:min(80vh,640px);overflow:auto;background:#fff;border:1px solid #dce4d8;border-radius:14px;padding:20px 22px;box-shadow:0 18px 55px #15241d40;outline:none}.v2-help-dialog-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;border-bottom:1px solid #e8ece4;padding-bottom:10px}.v2-help-dialog-heading h2{margin:0;font-size:18px;color:#294b3b}.v2-help-close{width:38px;height:38px;padding:0;font-size:24px;line-height:1;border-radius:50%}.v2-help-content{padding-top:14px;color:#56634f;font-size:14px;line-height:1.9}.collection-kind-select select{display:block;width:100%;border:1px solid #daddd1;background:white;border-radius:6px;padding:11px 12px;color:#263b2c;margin-top:7px}.nav-children{margin:2px 0 8px 8px;padding:3px 10px 3px 0;border-right:2px solid #e3e9de}.nav-children:empty{display:none}aside nav>.nav-children>button{width:100%;min-height:40px;text-align:right;background:transparent;border:0;margin:1px 0;padding:8px 12px 8px 8px;color:#64705e;font-size:12px}aside nav>.nav-children>.selected{background:#edf1e9;color:#264633;font-weight:600;border-radius:6px}footer{justify-content:flex-start}
+@media(max-width:700px){.nav-children{margin-right:8px;margin-left:0}.v2-help-dialog{padding:18px}.v2-help-trigger{min-width:36px;min-height:36px}}
+.tag-manager{margin:18px 0;padding:16px;border:1px solid #daddd1;border-radius:9px;background:#fbfcf8}.tag-manager-heading{display:flex;align-items:center;gap:4px;color:#526249;font-size:13px}.tag-empty{font-size:12px;color:#929987}.tag-add-row{display:flex;align-items:center;gap:9px}.tag-add-row input{flex:1;min-width:0}.tag-add-row button{flex:none}.tag-add-row button:disabled{cursor:not-allowed}@media(max-width:700px){.tag-manager{padding:13px}.tag-add-row{align-items:stretch;flex-direction:column}.tag-add-row button{min-height:44px}}
+
+.tag-add-row>select{flex:0 1 220px;min-width:160px;border:1px solid #daddd1;background:#fff;border-radius:6px;padding:10px;color:#263b2c}.tag-custom-add{flex:1;min-width:0;display:flex;align-items:center;gap:9px}.tag-custom-add input{flex:1;min-width:0}.tag-custom-add button{flex:none}@media(max-width:700px){.tag-add-row>select,.tag-custom-add{width:100%;flex:none}.tag-custom-add{align-items:stretch;flex-direction:column}.tag-custom-add button{min-height:44px}}
+.main-with-action-bar{padding-bottom:160px}.form-action-bar{justify-content:center}.form-action-buttons{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;gap:10px;width:100%;max-width:1240px;margin:0 auto}.form-action-buttons>button{min-width:150px;min-height:46px}.action-upload{display:flex;align-items:center;gap:8px;min-height:46px;padding:6px 12px;margin:0}.action-upload input{display:block;max-width:180px;margin:0}@media(max-width:700px){.main-with-action-bar{padding-bottom:210px}.form-action-bar{max-height:42vh;overflow-y:auto;align-items:flex-start}.form-action-buttons{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));align-items:stretch;gap:8px}.form-action-buttons>button{width:100%;min-width:0;min-height:46px}.action-upload{width:100%;min-width:0;flex-direction:column;justify-content:center;padding:6px;min-height:66px;text-align:center}.action-upload input{max-width:100%;width:100%}}
+@media(max-width:700px){.menu-toggle{position:sticky;top:0;z-index:60;margin:0 0 10px;width:100%;border-radius:0;box-shadow:0 2px 9px #263b2c18;background:rgba(252,252,248,.98)}.form-action-bar{max-height:none;overflow-x:auto;overflow-y:hidden;align-items:center;white-space:nowrap;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}.form-action-buttons{display:flex;flex-wrap:nowrap;justify-content:flex-start;align-items:center;width:max-content;min-width:100%;max-width:none;margin:0;white-space:nowrap}.form-action-buttons>button,.form-action-buttons>.action-link{width:auto;min-width:max-content;min-height:48px;flex:0 0 auto;white-space:nowrap}.action-upload{width:auto;min-width:max-content;min-height:48px;flex:0 0 auto;flex-direction:row;white-space:nowrap}.action-upload input{width:150px;max-width:150px}}
+.mobile-preview-link{display:none}.icon-action{width:48px;min-width:48px!important;height:48px;padding:0;font-size:22px;line-height:1;display:inline-flex;align-items:center;justify-content:center}
+@media(max-width:700px){.desktop-preview-link{display:none!important}.menu-toggle{position:fixed;top:0;right:0;left:auto;width:auto;min-width:112px;height:48px;margin:0;border-radius:0 0 0 8px}.mobile-preview-link{position:fixed;display:flex;align-items:center;justify-content:center;top:0;left:0;z-index:60;height:48px;min-width:106px;padding:0 10px;background:rgba(252,252,248,.98);border:1px solid #dcded6;border-top:0;border-left:0;border-radius:0 0 8px 0;color:#33483b;font-size:12px;white-space:nowrap;box-shadow:0 2px 9px #263b2c18}.shell>aside.mobile-open{padding-top:58px}.icon-action{width:48px;min-width:48px!important;height:48px}}
+
+/* Tailwind v4 styles for Dashboard V2. Preflight is intentionally omitted so the existing Quill editor keeps its original base styles. */
+.v2-shell{@apply relative block min-h-screen bg-studio-page}
+.v2-shell .workspace{@apply min-h-screen bg-white;min-width:0;margin-right:15rem}
+.v2-shell>aside{@apply fixed inset-y-0 right-0 z-40 flex w-60 flex-col overflow-y-auto border-l border-studio-line bg-white px-4 py-8;box-shadow:none}
+.v2-shell .logo{@apply mb-9 mt-1 text-3xl text-studio-forest;direction:ltr;text-align:center;font-family:Georgia,serif;font-style:italic}
+.v2-shell .logo span{@apply text-sm text-studio-muted;font-family:Georgia,serif}
+.v2-shell .aside-label{@apply mb-3 px-3 text-xs text-studio-muted}
+.v2-shell aside nav{@apply flex flex-col gap-1}
+.v2-shell aside nav>button{@apply flex min-h-12 w-full items-center gap-3 rounded-lg border-0 bg-transparent px-3 py-2 text-right text-studio-ink;transition:background-color .15s ease,color .15s ease}
+.v2-shell aside nav>button:hover{@apply bg-stone-100 text-studio-forest}
+.v2-shell aside nav>.selected{@apply bg-studio-soft font-semibold text-studio-forest;box-shadow:inset -3px 0 #254b3a}
+.v2-shell aside nav>.nav-children{@apply mb-2 mr-2 border-r-2 border-studio-line pr-2}
+.v2-shell aside nav>.nav-children>button{@apply min-h-10 w-full rounded-md border-0 bg-transparent px-3 py-2 text-right text-xs text-studio-muted}
+.v2-shell aside nav>.nav-children>.selected{@apply bg-studio-soft font-semibold text-studio-forest}
+.v2-shell .nav-count{@apply mr-auto ml-2 text-xs text-studio-muted}
+.v2-shell .v2-glyph{@apply h-6 w-6 shrink-0}
+.v2-shell .aside-bottom{@apply mt-auto px-3 pt-8 text-xs text-studio-muted}
+.v2-shell .aside-bottom small{@apply mt-2 block text-studio-muted}
+.v2-shell .live-dot{@apply inline-block h-2 w-2 rounded-full bg-emerald-700 ml-1}
+.v2-shell .workspace>header{@apply flex min-h-24 items-center justify-between gap-6 border-b border-studio-line bg-white px-9 py-5;box-shadow:none}
+.v2-shell .breadcrumb{@apply text-xs text-studio-muted}
+.v2-shell h1{@apply mt-1 text-3xl font-bold leading-snug text-studio-ink}
+.v2-shell .desktop-preview-link{@apply inline-flex items-center gap-2 rounded-lg border border-studio-forest bg-white px-4 py-2 text-sm font-semibold text-studio-forest;transition:background-color .15s ease}
+.v2-shell .desktop-preview-link:hover{@apply bg-studio-soft}
+.v2-shell #main-content{@apply mx-auto w-full max-w-6xl px-9 pt-7; padding-bottom:calc(72px + env(safe-area-inset-bottom) + 18px)}
+.v2-shell .status{@apply mb-5 flex min-h-10 items-center gap-3 rounded-xl border border-studio-line bg-stone-50 px-4 py-3 text-sm text-studio-muted}
+.v2-shell .status strong{@apply shrink-0 text-sm font-semibold text-studio-forest}
+.v2-shell .status span{@apply text-xs leading-6}
+.v2-shell .status-saved{@apply border-studio-soft bg-studio-soft text-studio-forest}
+.v2-shell .status-saved strong{@apply text-studio-forest}
+.v2-shell .status-saved strong::before{@apply mr-2 inline-grid h-7 w-7 place-items-center rounded-full bg-studio-forest text-white;content:'✓';vertical-align:middle}
+.v2-shell .status-dirty{@apply border-amber-200 bg-amber-50}
+.v2-shell .welcome{@apply flex justify-between gap-5 overflow-hidden rounded-2xl border border-studio-line bg-studio-soft px-10 py-9}
+.v2-shell .welcome h2{@apply max-w-2xl text-3xl font-semibold leading-relaxed text-studio-forest}
+.v2-shell .welcome p{@apply max-w-2xl text-sm leading-8 text-studio-muted}
+.v2-shell .eyebrow{@apply text-xs font-semibold tracking-wide text-amber-900}
+.v2-shell .stats{@apply my-6 grid grid-cols-3 gap-4}
+.v2-shell .stats article{@apply flex min-h-24 items-center justify-between rounded-xl border border-studio-line bg-white px-6 py-5}
+.v2-shell .stats small{@apply text-xs text-studio-muted}
+.v2-shell .stats strong{@apply text-3xl font-normal text-studio-forest}
+.v2-shell .panel{@apply mb-5 rounded-xl border border-studio-line bg-white p-7}
+.v2-shell .panel h2{@apply text-xl font-semibold leading-relaxed text-studio-forest}
+.v2-shell .panel h3{@apply text-lg font-semibold text-studio-ink}
+.v2-shell .hint,.v2-shell .field-help{@apply text-sm leading-7 text-studio-muted}
+.v2-shell .list-heading{@apply mb-1 flex items-center justify-between gap-4}
+.v2-shell .content-list{@apply mt-4}
+.v2-shell .content-list-item{@apply flex min-h-24 items-center justify-between gap-4 border-t border-stone-200 bg-white px-2 py-4;transition:background-color .15s ease}
+.v2-shell .content-list-item:last-child{@apply border-b border-stone-200}
+.v2-shell .content-list-item:hover{@apply bg-stone-50}
+.v2-shell .content-list-item h3{@apply m-0 text-base font-semibold text-studio-ink}
+.v2-shell .content-list-excerpt,.v2-shell .list-item-state{@apply text-xs leading-6 text-studio-muted}
+.v2-shell .content-list-item .actions{@apply flex flex-wrap items-center gap-2}
+.v2-shell .content-list-item .actions button{@apply min-h-11 rounded-lg border border-stone-200 bg-white text-studio-forest}
+.v2-shell .content-list-item .actions .danger,.v2-shell .danger{@apply border-red-200 bg-red-50 text-studio-coral}
+.v2-shell .primary{@apply border-studio-forest bg-studio-forest text-white}
+.v2-shell .primary:hover{@apply bg-studio-forest-dark}
+.v2-shell .screen-list-panel>.list-heading,.v2-shell .collection-items-list>.list-heading{@apply hidden}
+.v2-shell .collection-items-list .content-list-item{@apply min-h-28 flex-row items-center gap-3 px-3 py-4}
+.v2-shell .content-list-item-main{@apply flex min-w-0 flex-1 items-center gap-3}
+.v2-shell .content-list-item-main>div{@apply min-w-0}
+.v2-shell .content-list-thumb{@apply h-20 w-20 shrink-0 rounded-lg bg-stone-100 object-cover}
+.v2-shell .collection-items-list .content-list-item-main h3{@apply text-lg leading-snug}
+.v2-shell .collection-items-list .status-pill{@apply mt-2 inline-flex min-h-7 items-center rounded-full bg-studio-soft px-3 py-1 text-xs text-studio-forest}
+.v2-shell .collection-items-list .actions{@apply flex shrink-0 flex-row-reverse items-center gap-2;direction:ltr}
+.v2-shell .collection-items-list .icon-button{@apply grid h-11 w-11 min-w-11 place-items-center rounded-lg border border-stone-300 bg-white p-2 text-studio-forest}
+.v2-shell .collection-items-list .icon-button.danger{@apply border-red-200 bg-white text-studio-coral}
+.v2-shell .row-reorder-actions{@apply relative}
+.v2-shell .row-reorder-actions>summary{@apply grid h-10 w-9 cursor-pointer list-none place-items-center rounded-lg text-lg text-studio-muted}
+.v2-shell .row-reorder-actions>summary::-webkit-details-marker{display:none}
+.v2-shell .row-reorder-actions>div{@apply absolute bottom-full left-0 z-10 flex gap-1 rounded-lg border border-studio-line bg-white p-2 shadow-lg}
+.v2-shell .row-reorder-actions>div button{@apply min-h-10 min-w-10 p-1}
+.v2-shell .content-list-panel{@apply bg-white shadow-none}
+.v2-shell .list-add-action{@apply mt-4 inline-flex min-h-12 items-center gap-2 rounded-lg px-4 py-2 font-semibold}
+.v2-shell .list-add-action .v2-glyph{@apply h-5 w-5}
+.v2-shell .page-editor-form,.v2-shell .item-editor-form,.v2-shell .collection-form,.v2-shell .site-settings-panel,.v2-shell .publish-panel{@apply p-8}
+.v2-shell .collection-form>label,.v2-shell .page-editor-form>label,.v2-shell .item-editor-form>label,.v2-shell .site-settings-panel>label,.v2-shell .publish-panel>label{@apply my-4 text-sm font-semibold text-stone-700}
+.v2-shell .collection-form>label>input,.v2-shell .page-editor-form>label>input,.v2-shell .page-editor-form>label>textarea,.v2-shell .item-editor-form>label>input,.v2-shell .site-settings-panel>label>input,.v2-shell .site-settings-panel>label>select,.v2-shell .publish-panel>label>select{@apply rounded-lg border border-stone-300 bg-white px-4 py-3 text-studio-ink;box-shadow:inset 0 1px 2px #31291b08}
+.v2-shell .collection-form>label>input:focus,.v2-shell .page-editor-form>label>input:focus,.v2-shell .page-editor-form>label>textarea:focus,.v2-shell .item-editor-form>label>input:focus,.v2-shell .site-settings-panel>label>input:focus,.v2-shell .site-settings-panel>label>select:focus,.v2-shell .publish-panel>label>select:focus{@apply border-emerald-700 outline-none ring-2 ring-emerald-700/20}
+.v2-shell select{@apply appearance-none bg-white pl-10; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23586659' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");background-position:left 14px center;background-repeat:no-repeat;background-size:16px}
+.v2-shell .form-action-bar{@apply fixed bottom-0 left-0 right-60 z-50 flex min-h-16 items-center border-t border-studio-line bg-white/95 px-9 py-2;backdrop-filter:blur(12px);padding-bottom:calc(.5rem + env(safe-area-inset-bottom))}
+.v2-shell .form-action-buttons{@apply mx-auto flex w-full max-w-6xl flex-wrap items-center justify-start gap-2}
+.v2-shell .form-action-buttons:empty{@apply hidden}
+.v2-shell .form-action-bar:has(.form-action-buttons:empty){@apply hidden}
+.v2-shell .v2-action-button{@apply inline-flex min-h-12 min-w-12 items-center justify-center gap-2 rounded-lg font-semibold}
+.v2-shell .v2-action-button .v2-glyph{@apply h-5 w-5}
+.v2-shell .v2-action-button.danger{@apply text-studio-coral}
+.v2-shell .collection-items-actions{@apply flex w-full max-w-none items-center justify-between;direction:rtl}
+.v2-shell .collection-items-actions .v2-action-button{@apply min-w-14}
+.v2-shell .settings-card-actions{@apply mt-5 flex flex-wrap items-center gap-3}
+.v2-shell .v2-control-link{@apply relative inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-semibold text-studio-forest}
+.v2-shell .v2-control-link:hover{@apply bg-studio-soft}
+.v2-shell .v2-control-link .v2-glyph{@apply h-5 w-5}
+.v2-shell .backup-file-input{@apply absolute inset-0 m-0 h-full w-full cursor-pointer opacity-0}
+.v2-shell .older-backups{@apply mt-5 border-t border-studio-line pt-4}
+.v2-shell .older-backups summary{@apply cursor-pointer text-xs text-studio-muted}
+.v2-shell .older-backups a{@apply ml-2 text-studio-forest underline}
+.v2-shell .publish-actions{@apply mt-6 flex flex-wrap gap-3}
+.v2-shell .publish-actions button{@apply inline-flex min-h-12 items-center gap-2 rounded-lg}
+.v2-shell .publish-actions button .v2-glyph{@apply h-5 w-5}
+.v2-shell .v2-media-control{@apply my-5}
+.v2-shell .v2-media-control>strong{@apply mb-3 block}
+.v2-shell .v2-media-list{@apply grid grid-cols-2 gap-4}
+.v2-shell .v2-media-list article{@apply rounded-lg border border-stone-200 p-3}
+.v2-shell .v2-media-list img{@apply h-44 w-full bg-stone-100 object-contain}
+.v2-shell .v2-document-block{@apply bg-stone-50}
+.v2-shell .v2-field-definition{@apply my-3 p-4}
+.v2-shell .v2-category-field{@apply my-5 rounded-lg border border-stone-200 px-4 py-3}
+.v2-shell .v2-category-field legend{@apply text-sm text-stone-700}
+.v2-shell .v2-migration-backup{@apply break-words}
+.v2-shell .v2-migration-backup a{@apply text-studio-forest underline}
+.v2-shell .v2-help-tip{@apply mx-1 inline-flex align-middle}
+.v2-shell .v2-help-trigger{@apply inline-grid h-7 w-7 min-h-7 place-items-center rounded-full bg-studio-soft p-1 text-studio-forest}
+.v2-shell .v2-help-trigger:hover{@apply bg-emerald-100}
+.v2-shell .v2-help-trigger svg{@apply h-5 w-5;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.v2-shell .v2-help-backdrop{@apply fixed inset-0 z-[1000] grid place-items-center bg-black/50 p-5}
+.v2-shell .v2-help-dialog{@apply max-h-[80vh] w-full max-w-md overflow-auto rounded-xl border border-studio-line bg-white p-5 shadow-2xl outline-none}
+.v2-shell .v2-help-dialog-heading{@apply flex items-center justify-between gap-4 border-b border-stone-200 pb-3}
+.v2-shell .v2-help-dialog-heading h2{@apply m-0 text-lg font-semibold text-studio-forest}
+.v2-shell .v2-help-close{@apply grid h-10 w-10 place-items-center rounded-full p-0 text-2xl}
+.v2-shell .v2-help-content{@apply pt-4 text-sm leading-8 text-stone-700}
+.v2-shell .v2-type-choice{@apply my-5 grid grid-cols-[1fr_auto] items-center gap-3 rounded-lg border border-stone-300 p-4}
+.v2-shell .v2-type-choice legend{@apply px-1 text-sm text-stone-700}
+.v2-shell .v2-type-choice .field-help{@apply col-span-full}
+.v2-shell .field-help{@apply mt-1 block text-xs leading-6 text-studio-muted}
+.v2-shell .optional{@apply text-xs text-studio-muted}
+.v2-shell .v2-category-field legend .v2-help-tip{@apply font-normal}
+.v2-shell .tag-manager{@apply my-5 rounded-lg border border-stone-300 bg-stone-50 p-4}
+.v2-shell .tag-manager-heading{@apply flex items-center gap-1 text-sm text-stone-700}
+.v2-shell .tag-empty{@apply text-xs text-studio-muted}
+.v2-shell .tag-add-row{@apply flex items-center gap-2}
+.v2-shell .tag-add-row>select{@apply min-w-40 basis-56 rounded-md border border-stone-300 bg-white p-2}
+.v2-shell .tag-custom-add{@apply flex min-w-0 flex-1 items-center gap-2}
+.v2-shell .tag-custom-add input{@apply min-w-0 flex-1}
+.v2-shell .tag-custom-add button{@apply shrink-0}
+.v2-shell .auto-excerpt-note{@apply rounded-md bg-stone-50 p-3}
+.v2-shell .content-list-item-main h3{@apply m-0}
+.v2-shell .collection-form .actions{@apply mt-6}
+.v2-shell .cover-from-gallery{@apply mt-0}
+.v2-shell .content-list-excerpt{@apply my-1 leading-6}
+.v2-shell .v2-drawer-backdrop{@apply hidden}
+.v2-shell .menu-toggle,.v2-shell .mobile-preview-link,.v2-shell .mobile-brand{@apply hidden}
+@media(max-width:64rem){
+ .v2-shell .workspace{@apply mr-52}
+ .v2-shell>aside{@apply w-52}
+ .v2-shell .form-action-bar{@apply right-52 px-6}
+ .v2-shell #main-content{@apply px-6}
+}
+@media(max-width:48rem){
+ .v2-shell::before{content:'';position:fixed;inset:0 0 auto;height:3.5rem;z-index:110;background:#fff;border-bottom:1px solid #e4e2de}
+ .v2-shell .workspace{@apply mr-0 pt-14}
+ .v2-shell .workspace>header{@apply min-h-28 flex-row items-start px-4 py-4}
+ .v2-shell .workspace>header>div:first-child{@apply w-full text-right}
+ .v2-shell .workspace>header .actions{@apply w-auto}
+ .v2-shell .breadcrumb{@apply mb-2 block}
+ .v2-shell h1{@apply mt-0 text-2xl}
+ .v2-shell #main-content{@apply px-4 pt-3;max-width:none;padding-bottom:calc(70px + env(safe-area-inset-bottom) + 16px)}
+ .v2-shell .welcome{@apply rounded-xl px-5 py-6}
+ .v2-shell .welcome h2{@apply text-2xl leading-relaxed}
+ .v2-shell .stats{@apply my-4 gap-2}
+ .v2-shell .stats article{@apply min-h-20 flex-col rounded-lg px-2 py-3}
+ .v2-shell .stats small{@apply text-xs}
+ .v2-shell .stats strong{@apply text-2xl}
+ .v2-shell .panel{@apply rounded-xl p-4}
+ .v2-shell .page-editor-form,.v2-shell .item-editor-form,.v2-shell .collection-form,.v2-shell .site-settings-panel,.v2-shell .publish-panel{@apply p-4}
+ .v2-shell>aside{@apply fixed inset-y-14 right-0 z-[105] flex w-[min(84vw,20rem)] max-h-[calc(100dvh-3.5rem)] translate-x-full flex-col overflow-y-auto rounded-none border-l border-studio-line bg-white px-4 pb-6 pt-5 shadow-2xl invisible;transition:transform .22s ease,visibility .22s ease}
+ .v2-shell>aside.mobile-open{@apply visible translate-x-0 pt-5}
+ .v2-shell>aside nav>button{@apply min-h-12}
+ .v2-shell .menu-toggle{@apply fixed right-0 top-0 z-[121] flex h-14 min-h-14 w-14 min-w-14 items-center justify-center rounded-none border-0 bg-transparent p-0 text-transparent shadow-none;display:flex;font-size:0}
+ .v2-shell .menu-toggle::before{content:'☰';font-size:25px;color:#243b2d}
+ .v2-shell .menu-toggle[aria-expanded="true"]::before{content:'×';font-size:32px}
+ .v2-shell .mobile-preview-link{@apply fixed left-0 top-0 z-[121] inline-flex h-14 min-h-14 items-center justify-center border-0 bg-transparent px-4 text-xs font-semibold text-studio-forest shadow-none}
+ .v2-shell .mobile-brand{@apply fixed left-1/2 top-2 z-[121] block -translate-x-1/2 whitespace-nowrap text-2xl text-studio-forest;direction:ltr;font-family:Georgia,serif;font-style:italic}
+ .v2-shell .mobile-brand span{@apply text-xs text-studio-muted;font-family:Georgia,serif}
+ .v2-shell .v2-drawer-backdrop{@apply fixed inset-x-0 bottom-0 top-14 z-[100] block w-full rounded-none border-0 bg-black/45 p-0;backdrop-filter:blur(1px)}
+ .v2-shell .status{@apply mb-4 min-h-12 gap-2 px-3 py-2}
+ .v2-shell .screen-list-panel,.v2-shell .collection-items-list{@apply rounded-xl px-3 py-2}
+ .v2-shell .collection-items-list .content-list-item{@apply min-h-24 flex-row items-center gap-2 py-3}
+ .v2-shell .collection-items-list .content-list-item-main{@apply gap-2}
+ .v2-shell .collection-items-list .content-list-thumb{@apply h-14 w-14 rounded-lg}
+ .v2-shell .collection-items-list .content-list-item-main h3{@apply text-sm}
+ .v2-shell .collection-items-list .status-pill{@apply mt-1 min-h-6 px-2 text-[10px]}
+ .v2-shell .collection-items-list .actions{@apply gap-1}
+ .v2-shell .collection-items-list .icon-button{@apply h-9 w-9 min-w-9 rounded-lg p-1}
+ .v2-shell .collection-items-list .icon-button .v2-glyph{@apply h-5 w-5}
+ .v2-shell .row-reorder-actions>summary{@apply h-9 w-7 text-base}
+ .v2-shell .form-action-bar{@apply left-0 right-0 min-h-[calc(70px+env(safe-area-inset-bottom))] px-3 py-2;overflow-x:auto;overflow-y:hidden;white-space:nowrap;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
+ .v2-shell .form-action-buttons{@apply mx-0 w-max min-w-full max-w-none flex-nowrap justify-start whitespace-nowrap}
+ .v2-shell .form-action-buttons>.v2-action-button{@apply h-13 min-h-13 w-13 min-w-13 p-0}
+ .v2-shell .form-action-buttons>.v2-action-button .action-label{@apply hidden}
+ .v2-shell .form-action-buttons>.v2-action-button .v2-glyph{@apply h-6 w-6}
+ .v2-shell .collection-items-actions{@apply w-full min-w-full justify-between}
+ .v2-shell .settings-card-actions{@apply flex-col items-stretch}
+ .v2-shell .v2-control-link{@apply min-h-12 w-full}
+ .v2-shell .v2-media-list{@apply grid-cols-1}
+ .v2-shell .v2-field-definition>.list-heading,.v2-shell .v2-document-block>.list-heading{@apply flex-col items-stretch}
+ .v2-shell .v2-document-block .actions button{@apply min-h-11}
+ .v2-shell .tag-manager{@apply p-3}
+ .v2-shell .tag-add-row,.v2-shell .tag-custom-add{@apply w-full flex-col items-stretch}
+ .v2-shell .tag-add-row>select{@apply w-full flex-none}
+ .v2-shell .tag-custom-add button{@apply min-h-11}
+}
+@media(max-width:24rem){
+ .v2-shell #main-content{@apply px-3}
+ .v2-shell .welcome{@apply px-4}
+ .v2-shell .stats article{@apply min-h-20 px-2 py-2}
+ .v2-shell .collection-items-list .content-list-item{@apply gap-1}
+ .v2-shell .collection-items-list .content-list-thumb{@apply h-13 w-12}
+ .v2-shell .collection-items-list .content-list-item-main{@apply gap-1}
+ .v2-shell .collection-items-list .icon-button{@apply h-8 w-8 min-w-8}
+ .v2-shell .row-reorder-actions{@apply hidden}
+ .v2-shell .settings-card-actions{@apply gap-2}
+}
+@media(prefers-reduced-motion:reduce){.v2-shell>aside{transition:none}}
+
+/* Reuse the collection row pattern for the pages list. */
+.v2-shell .page-list-panel .record-row{@apply min-h-24 flex-row items-center gap-3 px-2 py-4}
+.v2-shell .page-list-panel .record-row-main{@apply flex min-w-0 flex-1 flex-col items-start gap-0}
+.v2-shell .page-list-panel .record-row-main>div{@apply min-w-0}
+.v2-shell .page-list-panel .record-row-main h3{@apply text-base font-semibold}
+.v2-shell .page-list-panel .record-row-main .content-list-excerpt{@apply my-0 text-xs leading-6}
+.v2-shell .page-list-panel .record-row-main .status-pill{@apply mt-1 inline-flex min-h-6 items-center rounded-full bg-studio-soft px-2 py-1 text-[10px] text-studio-forest}
+.v2-shell .page-list-panel .record-row-actions{@apply flex shrink-0 flex-row-reverse items-center gap-2;direction:ltr}
+.v2-shell .page-list-panel .record-row-actions .icon-button{@apply grid h-11 w-11 min-w-11 place-items-center rounded-lg border border-stone-300 bg-white p-2 text-studio-forest}
+.v2-shell .page-list-panel .record-row-actions .icon-button.danger{@apply border-red-200 bg-white text-studio-coral}
+.v2-shell .page-list-panel .record-row-actions .icon-button .v2-glyph{@apply h-5 w-5}
+@media(max-width:48rem){
+ .v2-shell .page-list-panel .record-row{@apply min-h-24 flex-row items-center gap-2 py-3}
+ .v2-shell .page-list-panel .record-row-main{@apply gap-0}
+ .v2-shell .page-list-panel .record-row-main h3{@apply text-sm}
+ .v2-shell .page-list-panel .record-row-main .status-pill{@apply mt-1 min-h-6 px-2 text-[10px]}
+ .v2-shell .page-list-panel .record-row-actions{@apply gap-1}
+ .v2-shell .page-list-panel .record-row-actions .icon-button{@apply h-9 w-9 min-w-9 rounded-lg p-1}
+ .v2-shell .page-list-panel .record-row-actions .icon-button .v2-glyph{@apply h-5 w-5}
+}
+
+/* Explicit cascade guard for page rows: the legacy mobile list rules stack every row. */
+.v2-shell .content-list-panel .content-list-item.record-row{@apply flex min-h-24 flex-row items-center justify-between gap-3 px-2 py-3}
+.v2-shell .content-list-panel .content-list-item.record-row>.record-row-main{@apply flex min-w-0 flex-1 flex-col items-start gap-0}
+.v2-shell .content-list-panel .content-list-item.record-row>.record-row-actions{@apply flex shrink-0 flex-row-reverse items-center gap-2;direction:ltr}
+.v2-shell .content-list-panel .content-list-item.record-row>.record-row-actions button{@apply grid h-10 w-10 min-w-10 place-items-center rounded-lg border border-stone-300 bg-white p-2 text-studio-forest}
+.v2-shell .content-list-panel .content-list-item.record-row>.record-row-actions button.danger{@apply border-red-200 bg-white text-studio-coral}
+@media(max-width:48rem){
+ .v2-shell .content-list-panel .content-list-item.record-row{flex-direction:row!important;align-items:center!important;gap:.5rem!important;padding-block:.75rem!important}
+ .v2-shell .content-list-panel .content-list-item.record-row>.record-row-main{flex:1 1 auto!important;min-width:0!important;align-items:flex-start!important}
+ .v2-shell .content-list-panel .content-list-item.record-row>.record-row-actions{display:flex!important;flex:0 0 auto!important;flex-direction:row-reverse!important;gap:.25rem!important;width:auto!important}
+ .v2-shell .content-list-panel .content-list-item.record-row>.record-row-actions button{width:2.25rem!important;min-width:2.25rem!important;height:2.25rem!important;min-height:2.25rem!important;padding:.25rem!important}
+}
+
+/* Consistent action groups for editor forms and page operations. */
+.v2-shell .form-action-buttons{@apply flex items-center justify-between gap-3;direction:ltr}
+.v2-shell .action-group-left,.v2-shell .action-group-right{@apply flex items-center gap-2;direction:ltr}
+.v2-shell .v2-action-button .action-label{direction:rtl}
+.v2-shell .block-remove-button{@apply inline-flex items-center gap-2}
+.v2-shell .block-remove-button .v2-glyph{@apply h-5 w-5}
+.v2-shell .v2-upload-button{@apply relative inline-flex min-h-12 cursor-pointer items-center justify-center gap-2 rounded-lg border border-stone-300 bg-white px-4 py-2 font-semibold text-studio-forest}
+.v2-shell .v2-upload-button:hover{@apply bg-studio-soft}
+.v2-shell .v2-upload-button:focus-within{@apply outline outline-2 outline-emerald-700 outline-offset-2}
+.v2-shell .v2-visually-hidden-file{position:absolute!important;inset:0;width:100%!important;height:100%!important;margin:0!important;opacity:0!important;cursor:pointer}
+@media(max-width:48rem){
+ .v2-shell .form-action-buttons{@apply w-full min-w-full max-w-none flex-nowrap justify-between;direction:ltr}
+ .v2-shell .action-group-left,.v2-shell .action-group-right{@apply gap-2;direction:ltr}
+ .v2-shell .form-action-buttons .v2-action-button .action-label{@apply hidden}
+ .v2-shell .form-action-buttons .v2-action-button{@apply h-13 min-h-13 w-13 min-w-13 p-0}
+ .v2-shell .block-remove-button .action-label{@apply hidden}
+ .v2-shell .block-remove-button{@apply grid h-10 w-10 min-h-10 min-w-10 place-items-center p-2}
+ .v2-shell .v2-upload-button{@apply min-h-12 w-full}
+}
+.v2-shell .action-group-left:empty,.v2-shell .action-group-right:empty{@apply hidden}
+.v2-shell .form-action-bar:has(.action-group-left:empty):has(.action-group-right:empty){@apply hidden}
+@media(max-width:48rem){.v2-shell .form-action-buttons .action-group-left,.v2-shell .form-action-buttons .action-group-right{@apply flex items-center gap-2}.v2-shell .block-remove-button .action-label{@apply hidden}.v2-shell .block-remove-button{@apply h-10 w-10 min-h-10 min-w-10 p-2}}
+
+/* Focused dashboard UX updates: activity, event notices, and compact collection rows. */
+.v2-shell .status-notification{@apply fixed z-[90] flex min-h-12 items-center justify-between gap-3 rounded-xl border border-studio-line bg-white px-4 py-3 text-sm text-studio-ink shadow-lg;top:6.25rem;left:calc((100vw - 15rem)/2);right:auto;width:min(38rem,calc(100vw - 19rem));transform:translateX(-50%)}
+.v2-shell .status-notification button{@apply grid h-8 w-8 min-h-8 shrink-0 place-items-center rounded-full p-0 text-xl text-studio-muted}
+.v2-shell .activity-panel{@apply mt-5}
+.v2-shell .activity-chart{@apply mt-5 flex h-52 items-end justify-around gap-3 rounded-xl bg-stone-50 px-4 pb-3 pt-4}
+.v2-shell .activity-day{@apply flex h-full min-w-0 flex-1 flex-col items-center justify-end gap-2}
+.v2-shell .activity-count,.v2-shell .activity-label{@apply text-xs text-studio-muted}
+.v2-shell .activity-track{@apply flex h-36 w-full max-w-12 items-end overflow-hidden rounded-t-md bg-stone-200}
+.v2-shell .activity-track>span{@apply block w-full rounded-t-md bg-studio-forest;min-height:0;transition:height .2s ease}
+.v2-shell .activity-empty{@apply mt-4 rounded-lg bg-stone-50 p-5 text-sm text-studio-muted}
+.v2-shell .collection-row-main{@apply min-w-0 flex-1}
+.v2-shell .collection-row-actions{@apply flex shrink-0 items-center gap-2}
+.v2-shell .collection-row-actions button.icon-button{@apply grid h-11 w-11 min-w-11 place-items-center rounded-lg border border-stone-200 bg-white p-2 text-studio-forest}
+.v2-shell .collection-row-actions .icon-button.danger{@apply border-red-200 text-studio-coral}
+.v2-shell .image-actions{@apply flex items-center gap-2}
+.v2-shell .image-actions .icon-button{@apply grid h-10 w-10 min-h-10 min-w-10 place-items-center rounded-lg border border-stone-200 bg-white p-2 text-studio-forest}
+.v2-shell .image-actions .icon-button.danger{@apply border-red-200 text-studio-coral}
+.v2-shell .collection-kind-select .v2-help-tip,.v2-shell .page-editor-form label .v2-help-tip{@apply mr-1}
+@media(max-width:64rem){.v2-shell .status-notification{left:calc((100vw - 13rem)/2);width:min(38rem,calc(100vw - 17rem))}}
+@media(max-width:48rem){
+ .v2-shell .status-notification{top:calc(3.5rem + 7rem);left:1rem;right:1rem;width:auto;transform:none}
+ .v2-shell .collection-admin-row{@apply flex-row items-center gap-2 px-1 py-3}
+ .v2-shell .collection-admin-row .collection-row-actions{@apply flex-row gap-1}
+ .v2-shell .collection-row-actions button.icon-button{@apply h-10 w-10 min-h-10 min-w-10}
+ .v2-shell .list-add-action{@apply h-12 w-12 min-h-12 min-w-12 justify-center p-2}
+ .v2-shell .list-add-action .action-label{@apply hidden}
+ .v2-shell .activity-chart{@apply h-44 gap-1 px-2}
+ .v2-shell .activity-track{@apply h-28 max-w-8}
+}
+.collection-description-field{margin:18px 0}.collection-description-field>label{display:grid;gap:8px}.collection-description-field textarea{width:100%;min-height:112px;resize:vertical;border:1px solid #aeb8a7;border-radius:8px;background:#fff;padding:12px 14px;color:#263b2c;font:inherit;line-height:1.7}.collection-description-field textarea:focus{outline:2px solid #256b48;outline-offset:2px}.field-error{display:block;margin-top:6px;color:#a33129;font-size:13px;line-height:1.6}.collection-description-field .v2-control-link{min-height:44px;margin-top:6px}
+.browser-auth-notice,.native-preview-notice{margin:0;padding:12px 20px;background:#e8eee7;color:#263c32;font-size:14px;line-height:1.6;text-align:center}
+.native-auth-page{box-sizing:border-box;min-height:100vh;display:grid;place-items:center;padding:24px;background:#f5f3ed;color:#263c32;font-family:inherit}
+.native-auth-card{box-sizing:border-box;width:min(100%,520px);padding:clamp(24px,6vw,48px);border:1px solid #d9ded4;border-radius:20px;background:#fff;box-shadow:0 16px 48px #263c3214}
+.native-auth-brand{font-size:16px;font-weight:700;letter-spacing:.02em}.native-auth-brand span{font-weight:400;color:#748174}
+.native-auth-card h1{margin:28px 0 12px;font-size:clamp(24px,5vw,34px);line-height:1.35}
+.native-auth-intro,.native-auth-note,.native-auth-pending p{color:#58665b;font-size:15px;line-height:1.8}
+.native-auth-primary{width:100%;min-height:52px;margin-top:20px;border:0;border-radius:10px;background:#263c32;color:#fff;font:inherit;font-weight:700;cursor:pointer}
+.native-auth-primary:focus-visible,.native-session-bar button:focus-visible{outline:3px solid #427755;outline-offset:3px}
+.native-auth-secondary{min-height:44px;padding:8px 12px;border:1px solid #aeb8a7;border-radius:8px;background:transparent;color:#263c32;font:inherit;cursor:pointer}
+.native-auth-message{padding:12px;border-radius:8px;background:#f4f5f1;color:#263c32;line-height:1.7}
+.native-auth-pending{margin-top:20px;padding:16px;border:1px solid #d9ded4;border-radius:12px;background:#f8f9f6}
+.native-auth-code{display:block;margin:14px 0;padding:14px;border-radius:9px;background:#fff;color:#263c32;font:700 26px/1.3 ui-monospace,monospace;text-align:center;letter-spacing:.16em}
+.native-auth-note{margin:24px 0 0;padding-top:16px;border-top:1px solid #e5e8e2;font-size:13px}
+.native-auth-card form{display:grid;gap:10px;margin-top:18px}.native-auth-card form label{font-weight:700}.native-auth-card form input{box-sizing:border-box;width:100%;min-height:50px;padding:10px 12px;border:1px solid #aeb8a7;border-radius:8px;font:inherit;direction:ltr;text-align:left}.native-auth-card form input:focus-visible{outline:3px solid #427755;outline-offset:2px}.native-content-conflict{margin:0 0 16px;padding:16px}.native-content-conflict p{line-height:1.7}
+.native-session-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 20px;background:#263c32;color:#fff}
+.native-session-bar div{display:flex;flex-direction:column;gap:3px}.native-session-bar span{direction:ltr;unicode-bidi:isolate;text-align:right;font-size:13px;opacity:.82}
+.native-session-bar button{min-height:44px;padding:8px 14px;border:1px solid #ffffff80;border-radius:8px;background:transparent;color:#fff;font:inherit;cursor:pointer}

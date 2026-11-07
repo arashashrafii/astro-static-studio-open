@@ -1,0 +1,81 @@
+---
+import { collectionItemDescription } from '@astro-static-studio/contracts';
+
+const { collection, items, page = 1, totalPages = 1 } = Astro.props;
+const categoryField = collection.fields.find((field: any) => field.type === 'category' && field.label.includes('برچسب'))
+  ?? collection.fields.find((field: any) => field.type === 'category');
+const galleryField = collection.fields.find((field: any) => field.type === 'gallery');
+const published = items.filter((item: any) => item.collectionId === collection.id && item.published);
+const showMore = collection.loading === 'show-more' && published.length > collection.pageSize;
+
+function imageFor(item: any) {
+  if (collection.kind !== 'gallery') return item.coverImage;
+  const images = galleryField ? item.values[galleryField.id] as any[] | undefined : undefined;
+  return images?.[0];
+}
+
+function dateFor(item: any) {
+  const field = collection.fields.find((candidate: any) => candidate.type === 'text' && candidate.format === 'plain' && candidate.label.includes('تاریخ'));
+  return field ? item.values[field.id] as string | undefined : undefined;
+}
+
+function pageHref(nextPage: number) {
+  return nextPage === 1 ? `/${collection.slug}/` : `/${collection.slug}/page/${nextPage}/`;
+}
+---
+{categoryField?.categories.length > 0 && <nav class="category-filters" aria-label={`برچسب‌های ${collection.name}`}>
+  <button type="button" class="active" data-v2-filter="all">همه</button>
+  {categoryField.categories.map((category: any) => <button type="button" data-v2-filter={category.id}>{category.name}</button>)}
+</nav>}
+{published.length > 0 ? <>
+  <div class:list={['v2-collection-items', `v2-view-${collection.listLayout}`, `v2-kind-${collection.kind}`]} id="v2-collection-items" data-loading={collection.loading} data-page-size={collection.pageSize}>
+    {published.map((item: any, index: number) => {
+      const categories = (item.values[categoryField?.id ?? ''] ?? []) as string[];
+      const image = imageFor(item);
+      const date = dateFor(item);
+      return <a class="v2-item-card" data-v2-categories={categories.join('|')} data-v2-index={index} href={`/${collection.routeBase}/${item.slug}/`}>
+        {image && <img src={image.src} alt={image.alt} loading={index > 5 ? 'lazy' : 'eager'} />}
+        {(item.title || (collection.kind === 'gallery' && image?.title)) && <h2>{item.title || image?.title}</h2>}
+        {date && <time>{date}</time>}
+        {collection.kind === 'content' && <p>{collectionItemDescription(collection, item)}</p>}
+      </a>;
+    })}
+  </div>
+  {collection.loading === 'pagination' && totalPages > 1 && <nav class="v2-pagination" aria-label="صفحه‌های مجموعه">
+    {page > 1 && <a rel="prev" href={pageHref(page - 1)}>صفحهٔ قبل</a>}
+    <span>صفحهٔ {page.toLocaleString('fa')} از {totalPages.toLocaleString('fa')}</span>
+    {page < totalPages && <a rel="next" href={pageHref(page + 1)}>صفحهٔ بعد</a>}
+  </nav>}
+  {showMore && <button class="v2-show-more" type="button">نمایش موارد بیشتر</button>}
+</> : <p class="muted">هنوز موردی برای نمایش نیست.</p>}
+<script>
+  const list = document.querySelector<HTMLElement>('#v2-collection-items');
+  const cards = [...document.querySelectorAll<HTMLElement>('#v2-collection-items [data-v2-index]')];
+  const filterButtons = [...document.querySelectorAll<HTMLButtonElement>('[data-v2-filter]')];
+  const showMoreButton = document.querySelector<HTMLButtonElement>('.v2-show-more');
+  if (list) {
+    const loading = list.dataset.loading;
+    const pageSize = Number(list.dataset.pageSize || '12');
+    let visible = pageSize;
+    let filter = 'all';
+    const render = () => {
+      let shown = 0;
+      cards.forEach(card => {
+        const tags = card.dataset.v2Categories?.split('|') ?? [];
+        const matches = filter === 'all' || tags.includes(filter);
+        const withinRange = loading !== 'show-more' || shown < visible;
+        card.hidden = !matches || !withinRange;
+        if (matches) shown += 1;
+      });
+      if (showMoreButton) showMoreButton.hidden = cards.filter(card => !card.hidden).length >= shown;
+    };
+    filterButtons.forEach(button => button.addEventListener('click', () => {
+      filter = button.dataset.v2Filter ?? 'all';
+      visible = pageSize;
+      filterButtons.forEach(option => option.classList.toggle('active', option === button));
+      render();
+    }));
+    showMoreButton?.addEventListener('click', () => { visible += pageSize; render(); });
+    render();
+  }
+</script>

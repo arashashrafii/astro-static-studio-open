@@ -1,0 +1,10 @@
+---
+const {block}=Astro.props;
+const media=block.media;
+const align=block.align??'center';
+const size=block.size??'large';
+---
+{media&&<figure class={`v2-page-image v2-image-align-${align} v2-image-size-${size}`}>
+  <img src={media.src} alt={media.alt}/>
+  {media.title&&<figcaption>{media.title}</figcaption>}
+</figure>}

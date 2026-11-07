@@ -1,0 +1,6 @@
+---
+import InlineNode from './InlineNode.astro';
+const {block}=Astro.props;
+const classes=['v2-rich-block',`v2-align-${block.align}`,`v2-size-${block.size}`];
+---
+{block.type==='heading'?block.level===2?<h2 class:list={classes}>{block.children.map((node:any)=><InlineNode node={node}/>)}</h2>:block.level===3?<h3 class:list={classes}>{block.children.map((node:any)=><InlineNode node={node}/>)}</h3>:<h4 class:list={classes}>{block.children.map((node:any)=><InlineNode node={node}/>)}</h4>:<p class:list={classes}>{block.children.map((node:any)=><InlineNode node={node}/>)}</p>}

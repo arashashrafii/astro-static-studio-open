@@ -1,0 +1,7 @@
+---
+import RichText from './RichText.astro';
+import CollectionView from './CollectionView.astro';
+import ImageBlock from './ImageBlock.astro';
+const {blocks,data}=Astro.props;
+---
+{blocks.map((block:any)=>block.type==='richText'?<RichText document={block.document}/>:block.type==='gallery'?<section class={`gallery v2-page-gallery v2-gallery-${block.layout??'grid'}`}>{block.images.map((image:any)=><figure><img src={image.src} alt={image.alt}/>{image.title&&<figcaption>{image.title}</figcaption>}</figure>)}</section>:block.type==='image'?<ImageBlock block={block}/>:<CollectionView block={block} collection={data.collections.find((item:any)=>item.id===block.collectionId)} items={data.items}/>) }

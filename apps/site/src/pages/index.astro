@@ -1,0 +1,13 @@
+---
+import Layout from '../layouts/Layout.astro';
+import PageBlocks from '../components/PageBlocks.astro';
+import CollectionView from '../components/CollectionView.astro';
+import {content} from '../lib/content';
+const data=await content();
+const homePage=data.pages.find(page=>page.slug==='home'&&page.published);
+const firstCollection=data.collections[0];
+const homeCollectionBlock=firstCollection?{type:'collectionView',collectionId:firstCollection.id,view:'grid',categoryIds:[],sort:'manual',limit:12}:undefined;
+---
+<Layout data={data}>
+  {homePage?<><section class="hero"><span class="eyebrow">{data.site.name}</span><h1>{homePage.title}</h1>{homePage.description.source==='manual'&&<p>{homePage.description.value}</p>}</section><PageBlocks blocks={homePage.blocks} data={data}/></>:<><section class="hero"><span class="eyebrow">{data.site.name}</span><h1>{data.site.tagline||data.site.name}</h1></section>{firstCollection&&homeCollectionBlock&&<CollectionView block={homeCollectionBlock} collection={firstCollection} items={data.items}/>}</>}
+</Layout>

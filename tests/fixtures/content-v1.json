@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "site": {
+    "name": "Migration fixture",
+    "tagline": "",
+    "email": "",
+    "phone": ""
+  },
+  "entries": [
+    {
+      "id": "a7b1bb0e-92b7-4772-b88e-60389c07c033",
+      "kind": "page",
+      "slug": "about",
+      "title": "About",
+      "summary": "About this sample site.",
+      "published": true,
+      "components": [
+        { "type": "text", "body": "About this sample site." }
+      ]
+    },
+    {
+      "id": "9e9eeb74-5df7-4c51-9de7-d6e45b239074",
+      "kind": "project",
+      "slug": "sample-project",
+      "title": "Sample project",
+      "summary": "A project used for contract and migration tests.",
+      "categories": ["Sculpture"],
+      "tags": ["Sample"],
+      "releaseDate": "2024",
+      "published": true,
+      "components": [
+        { "type": "text", "body": "Project details." },
+        {
+          "type": "gallery",
+          "images": [
+            { "src": "/media/12345678-1234-4123-8123-123456789012.webp", "alt": "Sample artwork" }
+          ]
+        }
+      ]
+    }
+  ]
+}

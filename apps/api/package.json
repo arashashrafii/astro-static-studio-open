@@ -1,0 +1,1 @@
+{"name":"@astro-static-studio/api","private":true,"type":"module","scripts":{"dev":"tsx src/server.ts"},"dependencies":{"@astro-static-studio/contracts":"*","blake3-wasm":"2.1.5","express":"^5.1.0","mime-types":"3.0.2","multer":"^2.0.2","sharp":"^0.35.5","wrangler":"4.149.0"},"devDependencies":{"@types/express":"^5.0.0","@types/mime-types":"2.1.4","@types/multer":"^2.0.0"}}

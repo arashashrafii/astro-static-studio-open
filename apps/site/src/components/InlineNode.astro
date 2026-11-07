@@ -1,0 +1,4 @@
+---
+const {node}=Astro.props;
+---
+{node.type==='image'?<span class:list={['v2-inline-image-wrap',node.media.placement?`v2-inline-image-${node.media.placement}`:'']}><img class="v2-inline-image" src={node.media.src} alt={node.media.alt}/></span>:<span class:list={['v2-inline-text',`v2-size-${node.size??'normal'}`]}>{node.marks.includes('bold')&&node.marks.includes('italic')?<strong><em>{node.text}</em></strong>:node.marks.includes('bold')?<strong>{node.text}</strong>:node.marks.includes('italic')?<em>{node.text}</em>:node.text}</span>}

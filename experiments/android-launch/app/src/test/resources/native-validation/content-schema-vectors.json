@@ -1,0 +1,1840 @@
+{
+  "formatVersion": 1,
+  "contentSchemaVersion": 2,
+  "accepted": [
+    {
+      "name": "rich-text-gallery-category-link",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "rejected": [
+    {
+      "name": "duplicate-record-id",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "page-and-collection-route-collision",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "projects",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "stale-collection-reference",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "20000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "stale-category-reference",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "20000000-0000-4000-8000-000000000001"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "stale-item-collection-reference",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "20000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unknown-item-field-reference",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              },
+              "20000000-0000-4000-8000-000000000001": "orphan"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "automatic-description-without-text-source",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "collection-view-non-category-filter",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000005",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "published-gallery-item-without-image",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "gallery",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unsupported-rich-text-node",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      },
+                      {
+                        "type": "html",
+                        "html": "<script>"
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unsafe-media-path",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/uploads/raw.jpg",
+                  "alt": "Raw"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Portfolio",
+                "href": "https://example.com/work"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "unsafe-link-scheme",
+      "content": {
+        "version": 2,
+        "site": {
+          "name": "Example",
+          "tagline": "",
+          "email": "",
+          "phone": "",
+          "language": "en",
+          "direction": "ltr"
+        },
+        "pages": [
+          {
+            "id": "10000000-0000-4000-8000-000000000007",
+            "slug": "home",
+            "title": "Home",
+            "published": true,
+            "description": {
+              "source": "manual",
+              "value": ""
+            },
+            "blocks": [
+              {
+                "type": "collectionView",
+                "collectionId": "10000000-0000-4000-8000-000000000001",
+                "view": "grid",
+                "categoryFieldId": "10000000-0000-4000-8000-000000000002",
+                "categoryIds": [
+                  "10000000-0000-4000-8000-000000000003"
+                ],
+                "sort": "manual",
+                "limit": 12
+              }
+            ]
+          }
+        ],
+        "collections": [
+          {
+            "id": "10000000-0000-4000-8000-000000000001",
+            "slug": "projects",
+            "routeBase": "portfolio",
+            "name": "Projects",
+            "kind": "content",
+            "listLayout": "grid",
+            "loading": "show-more",
+            "pageSize": 12,
+            "presetId": "project",
+            "excerptSourceFieldId": "10000000-0000-4000-8000-000000000005",
+            "fields": [
+              {
+                "id": "10000000-0000-4000-8000-000000000002",
+                "type": "category",
+                "label": "Category",
+                "categories": [
+                  {
+                    "id": "10000000-0000-4000-8000-000000000003",
+                    "slug": "sculpture",
+                    "name": "Sculpture"
+                  }
+                ]
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000004",
+                "type": "gallery",
+                "label": "Gallery",
+                "maxItems": 10
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000005",
+                "type": "text",
+                "format": "rich",
+                "label": "Details"
+              },
+              {
+                "id": "10000000-0000-4000-8000-000000000006",
+                "type": "link",
+                "label": "External link"
+              }
+            ]
+          }
+        ],
+        "items": [
+          {
+            "id": "10000000-0000-4000-8000-000000000008",
+            "collectionId": "10000000-0000-4000-8000-000000000001",
+            "slug": "sample-project",
+            "published": true,
+            "title": "Sample project",
+            "coverImage": {
+              "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+              "alt": "Sculpture"
+            },
+            "description": {
+              "source": "auto"
+            },
+            "values": {
+              "10000000-0000-4000-8000-000000000002": [
+                "10000000-0000-4000-8000-000000000003"
+              ],
+              "10000000-0000-4000-8000-000000000004": [
+                {
+                  "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                  "alt": "Sculpture"
+                }
+              ],
+              "10000000-0000-4000-8000-000000000005": {
+                "type": "document",
+                "blocks": [
+                  {
+                    "type": "paragraph",
+                    "size": "normal",
+                    "align": "start",
+                    "children": [
+                      {
+                        "type": "text",
+                        "text": "A sculpture",
+                        "marks": [
+                          "bold"
+                        ]
+                      },
+                      {
+                        "type": "image",
+                        "media": {
+                          "src": "/media/10000000-0000-4000-8000-000000000009.webp",
+                          "alt": "Sculpture"
+                        }
+                      }
+                    ]
+                  }
+                ]
+              },
+              "10000000-0000-4000-8000-000000000006": {
+                "label": "Unsafe",
+                "href": "javascript:alert(1)"
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}

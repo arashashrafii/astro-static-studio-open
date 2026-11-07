@@ -1,0 +1,52 @@
+[
+  {
+    "relativePath": "index.html",
+    "contentUtf8": "",
+    "pagesHash": "bc88d1b19523ba52d6a2959dd93cf9c8"
+  },
+  {
+    "relativePath": "index.html",
+    "contentUtf8": "hello",
+    "pagesHash": "a2b82584e50075886b08927390f2f573"
+  },
+  {
+    "relativePath": "assets/app.js",
+    "contentUtf8": "console.log(\"ok\")",
+    "pagesHash": "6b3bb7f1a2e692baf095ebe8cd936e88"
+  },
+  {
+    "relativePath": "assets/پرونده.webp",
+    "contentUtf8": "سلام",
+    "pagesHash": "046ce640dc96c2ae90c1581c2efe1f16"
+  },
+  {
+    "relativePath": "README",
+    "contentUtf8": "portable text",
+    "pagesHash": "228f0ee2cb117c2cfc46f32ee7926808"
+  },
+  {
+    "relativePath": "assets/.well-known",
+    "contentUtf8": "dot file",
+    "pagesHash": "b825d8c2975b0f26c080f690713dabfe"
+  },
+  {
+    "relativePath": "assets/..well-known",
+    "contentUtf8": "dot prefix",
+    "pagesHash": "530b7b7fc2f4db381d907da21e0208e0"
+  },
+  {
+    "relativePath": "assets/ends.",
+    "contentUtf8": "trailing dot",
+    "pagesHash": "2ae5990be15354f55e109d46da4da088"
+  },
+  {
+    "relativePath": "assets/archive.tar.gz",
+    "contentUtf8": "compressed content",
+    "pagesHash": "8d4467dd61144bbd69c02653b5c10497"
+  },
+  {
+    "relativePath": "images/logo.SVG",
+    "contentUtf8": "<svg/>",
+    "pagesHash": "612fb42a45f4ff4cd02e24436376ddfb"
+  }
+]

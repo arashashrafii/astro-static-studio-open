@@ -1,0 +1,23 @@
+{
+  "name": "astro-static-studio",
+  "private": true,
+  "type": "module",
+  "workspaces": ["apps/*", "packages/*"],
+  "scripts": {
+    "dev": "concurrently -k -n api,site,admin \"npm run dev -w apps/api\" \"npm run dev -w apps/site\" \"npm run dev -w apps/admin\"",
+    "build": "npm run build:site && npm run build -w apps/admin",
+    "build:site": "tsx apps/api/src/build-site.ts",
+    "check": "tsc --noEmit",
+    "test": "node --import tsx --test tests/*.test.ts",
+    "test:smoke": "node tests/smoke.mjs",
+    "schema:content": "node --import tsx scripts/generate-content-contract-artifacts.mjs"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "concurrently": "^9.2.1",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3"
+  }
+}

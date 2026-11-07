@@ -1,0 +1,14 @@
+{
+  "name": "@astro-static-studio/site",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev --host 127.0.0.1 --port 4321 --ignore-lock",
+    "build": "astro build"
+  },
+  "dependencies": {
+    "astro": "^7.4.2",
+    "@astro-static-studio/contracts": "*",
+    "@astro-static-studio/theme": "*"
+  }
+}

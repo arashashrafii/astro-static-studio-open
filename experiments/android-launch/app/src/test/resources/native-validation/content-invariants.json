@@ -1,0 +1,78 @@
+{
+  "formatVersion": 1,
+  "contentSchemaVersion": 2,
+  "invariants": [
+    {
+      "id": "total-record-limit",
+      "rule": "pages.length + items.length must be at most 500."
+    },
+    {
+      "id": "unique-record-ids",
+      "rule": "Page, collection, and item IDs must be globally unique."
+    },
+    {
+      "id": "unique-public-routes",
+      "rule": "Page routes, collection list routes, and collection item detail routes must be unique."
+    },
+    {
+      "id": "unique-field-ids",
+      "rule": "Field IDs must be unique within each collection."
+    },
+    {
+      "id": "unique-category-ids-and-slugs",
+      "rule": "Category IDs and slugs must each be unique within their category field."
+    },
+    {
+      "id": "excerpt-source-is-text",
+      "rule": "A collection excerptSourceFieldId, when present, must reference a text field."
+    },
+    {
+      "id": "collection-layout-kind",
+      "rule": "Content collections cannot use masonry; gallery collections cannot use list layout."
+    },
+    {
+      "id": "item-collection-reference",
+      "rule": "Every item must reference an existing collection."
+    },
+    {
+      "id": "content-item-title",
+      "rule": "Items in content collections must have a non-empty title."
+    },
+    {
+      "id": "published-gallery-image",
+      "rule": "A published gallery item must have at least one image in a gallery field."
+    },
+    {
+      "id": "automatic-description-source",
+      "rule": "Items with automatic descriptions require the collection text excerpt source field."
+    },
+    {
+      "id": "item-value-field-reference",
+      "rule": "Every item value key must reference a field in its collection."
+    },
+    {
+      "id": "item-value-field-type",
+      "rule": "Each item value must match its field type and field limits; category values must reference categories defined by that field."
+    },
+    {
+      "id": "collection-view-reference",
+      "rule": "Every collectionView block must reference an existing collection."
+    },
+    {
+      "id": "collection-view-category-filter",
+      "rule": "A collectionView filter must reference a category field in that collection and categories defined by that field."
+    },
+    {
+      "id": "link-scheme-safety",
+      "rule": "Link values allow local absolute paths or http, https, mailto, and tel URLs; reject protocol-relative paths and other schemes."
+    },
+    {
+      "id": "rich-text-block-kind",
+      "rule": "Heading blocks require a level; paragraph blocks must not have one."
+    },
+    {
+      "id": "rich-text-limits",
+      "rule": "Rich text has at most 1,500,000 text characters and 33,000 images; text marks cannot repeat."
+    }
+  ]
+}

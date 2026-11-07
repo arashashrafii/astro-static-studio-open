@@ -1,0 +1,5 @@
+---
+import TextBlock from './TextBlock.astro';
+const {document}=Astro.props;
+---
+<div class="v2-rich-document">{document.blocks.map((block:any)=>block.type==='gallery'?<section class="gallery">{block.images.map((image:any)=><figure><img src={image.src} alt={image.alt}/>{image.alt&&<figcaption>{image.alt}</figcaption>}</figure>)}</section>:<TextBlock block={block}/>)}</div>

@@ -1,0 +1,11 @@
+---
+import {collectionItemDescription} from '@astro-static-studio/contracts';
+const {block,collection,items}=Astro.props;
+const galleryField=collection.fields.find((field:any)=>field.type==='gallery');
+const matching=items.filter((item:any)=>item.collectionId===collection.id&&item.published&&(!block.categoryIds.length||((item.values[block.categoryFieldId]??[]) as string[]).some((id:string)=>block.categoryIds.includes(id))));
+const ordered=[...matching];
+if(block.sort==='title')ordered.sort((a:any,b:any)=>a.title.localeCompare(b.title));
+if(block.sort==='newest')ordered.reverse();
+const visible=ordered.slice(0,collection.pageSize);
+---
+<section class:list={['v2-collection-view',`v2-view-${collection.listLayout}`]}><div class="v2-collection-heading"><h2>{collection.name}</h2><a href={`/${collection.slug}/`}>مشاهدهٔ همه</a></div>{visible.length?<div class:list={['v2-collection-items',`v2-view-${collection.listLayout}`,`v2-kind-${collection.kind}`]}>{visible.map((item:any)=>{const image=collection.kind==='gallery'?(galleryField?(item.values[galleryField.id]??[])[0]:undefined):item.coverImage;return <a class="v2-item-card" href={`/${collection.routeBase}/${item.slug}/`}>{image&&<img src={image.src} alt={image.alt}/ >}{item.title&&<h3>{item.title}</h3>}{collection.kind==='content'&&<p>{collectionItemDescription(collection,item)}</p>}</a>})}</div>:<p class="muted">هنوز موردی برای نمایش وجود ندارد.</p>}</section>

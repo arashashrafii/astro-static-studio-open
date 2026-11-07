@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "site": {
+    "name": "Astro Static Studio Example",
+    "tagline": "A neutral fixture for local development.",
+    "email": "",
+    "phone": "",
+    "language": "en",
+    "direction": "ltr"
+  },
+  "pages": [],
+  "collections": [],
+  "items": []
+}

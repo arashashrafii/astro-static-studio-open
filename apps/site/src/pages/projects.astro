@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CollectionListing from '../components/CollectionListing.astro';
+import { content } from '../lib/content';
+import { projectsIndexView } from '../lib/projects-route';
+const data=await content();
+const view=projectsIndexView(data);
+const totalPages=view.collection?.loading==='pagination'?Math.max(1,Math.ceil(view.items.filter(item=>item.published).length/view.collection.pageSize)):1;
+---
+<Layout data={data} title={view.collection?.name??'Projects'}><span class="eyebrow">{data.site.name} · PORTFOLIO</span><h1>{view.collection?.name??'Projects'}</h1>{view.collection?<CollectionListing collection={view.collection} items={view.items} page={1} totalPages={totalPages}/>:<p>هنوز پروژه‌ای منتشر نشده است.</p>}</Layout>

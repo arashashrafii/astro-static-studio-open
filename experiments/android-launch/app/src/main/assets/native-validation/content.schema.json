@@ -1,0 +1,802 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "number",
+      "const": 2
+    },
+    "site": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 200
+        },
+        "tagline": {
+          "type": "string",
+          "maxLength": 500
+        },
+        "email": {
+          "anyOf": [
+            {
+              "type": "string",
+              "format": "email",
+              "pattern": "^(?:[A-Za-z0-9_'+\\-]+\\.)*[A-Za-z0-9_'+\\-]*[A-Za-z0-9_+-]@(?:[A-Za-z0-9][A-Za-z0-9\\-]*\\.)+[A-Za-z]{2,}$"
+            },
+            {
+              "type": "string",
+              "const": ""
+            }
+          ]
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 80
+        },
+        "language": {
+          "default": "en",
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 35
+        },
+        "direction": {
+          "default": "ltr",
+          "type": "string",
+          "enum": [
+            "ltr",
+            "rtl"
+          ]
+        }
+      },
+      "required": [
+        "name",
+        "tagline",
+        "email",
+        "phone"
+      ]
+    },
+    "pages": {
+      "maxItems": 500,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 200
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "enum": [
+                  "auto",
+                  "manual"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "blocks": {
+            "maxItems": 30,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "richText"
+                    },
+                    "document": {
+                      "type": "object",
+                      "properties": {
+                        "type": {
+                          "type": "string",
+                          "const": "document"
+                        },
+                        "blocks": {
+                          "maxItems": 60030,
+                          "type": "array",
+                          "items": {
+                            "oneOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "paragraph",
+                                      "heading"
+                                    ]
+                                  },
+                                  "level": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "const": 2
+                                      },
+                                      {
+                                        "type": "number",
+                                        "const": 3
+                                      },
+                                      {
+                                        "type": "number",
+                                        "const": 4
+                                      }
+                                    ]
+                                  },
+                                  "size": {
+                                    "type": "string",
+                                    "enum": [
+                                      "small",
+                                      "normal",
+                                      "large"
+                                    ]
+                                  },
+                                  "align": {
+                                    "type": "string",
+                                    "enum": [
+                                      "start",
+                                      "center",
+                                      "end"
+                                    ]
+                                  },
+                                  "children": {
+                                    "maxItems": 5000,
+                                    "type": "array",
+                                    "items": {
+                                      "oneOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "const": "text"
+                                            },
+                                            "text": {
+                                              "type": "string",
+                                              "maxLength": 50000
+                                            },
+                                            "marks": {
+                                              "maxItems": 2,
+                                              "type": "array",
+                                              "items": {
+                                                "type": "string",
+                                                "enum": [
+                                                  "bold",
+                                                  "italic"
+                                                ]
+                                              }
+                                            },
+                                            "size": {
+                                              "type": "string",
+                                              "enum": [
+                                                "small",
+                                                "normal",
+                                                "large"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "type",
+                                            "text",
+                                            "marks"
+                                          ]
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "type": {
+                                              "type": "string",
+                                              "const": "image"
+                                            },
+                                            "media": {
+                                              "type": "object",
+                                              "properties": {
+                                                "src": {
+                                                  "type": "string",
+                                                  "pattern": "^\\/media\\/[a-f0-9-]+\\.webp$"
+                                                },
+                                                "alt": {
+                                                  "type": "string",
+                                                  "maxLength": 500
+                                                },
+                                                "title": {
+                                                  "type": "string",
+                                                  "maxLength": 500
+                                                },
+                                                "placement": {
+                                                  "type": "string",
+                                                  "enum": [
+                                                    "inline",
+                                                    "wrap-start",
+                                                    "wrap-end",
+                                                    "block-start",
+                                                    "block-center",
+                                                    "block-end"
+                                                  ]
+                                                }
+                                              },
+                                              "required": [
+                                                "src",
+                                                "alt"
+                                              ]
+                                            }
+                                          },
+                                          "required": [
+                                            "type",
+                                            "media"
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "size",
+                                  "align",
+                                  "children"
+                                ]
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string",
+                                    "const": "gallery"
+                                  },
+                                  "images": {
+                                    "maxItems": 100,
+                                    "type": "array",
+                                    "items": {
+                                      "type": "object",
+                                      "properties": {
+                                        "src": {
+                                          "type": "string",
+                                          "pattern": "^\\/media\\/[a-f0-9-]+\\.webp$"
+                                        },
+                                        "alt": {
+                                          "type": "string",
+                                          "maxLength": 500
+                                        },
+                                        "title": {
+                                          "type": "string",
+                                          "maxLength": 500
+                                        }
+                                      },
+                                      "required": [
+                                        "src",
+                                        "alt"
+                                      ]
+                                    }
+                                  }
+                                },
+                                "required": [
+                                  "type",
+                                  "images"
+                                ]
+                              }
+                            ]
+                          }
+                        }
+                      },
+                      "required": [
+                        "type",
+                        "blocks"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "document"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "gallery"
+                    },
+                    "images": {
+                      "maxItems": 100,
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "src": {
+                            "type": "string",
+                            "pattern": "^\\/media\\/[a-f0-9-]+\\.webp$"
+                          },
+                          "alt": {
+                            "type": "string",
+                            "maxLength": 500
+                          },
+                          "title": {
+                            "type": "string",
+                            "maxLength": 500
+                          }
+                        },
+                        "required": [
+                          "src",
+                          "alt"
+                        ]
+                      }
+                    },
+                    "layout": {
+                      "default": "grid",
+                      "type": "string",
+                      "enum": [
+                        "grid",
+                        "list",
+                        "masonry"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "images"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "image"
+                    },
+                    "media": {
+                      "type": "object",
+                      "properties": {
+                        "src": {
+                          "type": "string",
+                          "pattern": "^\\/media\\/[a-f0-9-]+\\.webp$"
+                        },
+                        "alt": {
+                          "type": "string",
+                          "maxLength": 500
+                        },
+                        "title": {
+                          "type": "string",
+                          "maxLength": 500
+                        }
+                      },
+                      "required": [
+                        "src",
+                        "alt"
+                      ]
+                    },
+                    "align": {
+                      "type": "string",
+                      "enum": [
+                        "start",
+                        "center",
+                        "end"
+                      ]
+                    },
+                    "size": {
+                      "type": "string",
+                      "enum": [
+                        "small",
+                        "medium",
+                        "large"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "type"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "type": {
+                      "type": "string",
+                      "const": "collectionView"
+                    },
+                    "collectionId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "view": {
+                      "type": "string",
+                      "enum": [
+                        "grid",
+                        "list",
+                        "masonry"
+                      ]
+                    },
+                    "categoryFieldId": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "categoryIds": {
+                      "default": [],
+                      "maxItems": 20,
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "format": "uuid",
+                        "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                      }
+                    },
+                    "sort": {
+                      "default": "manual",
+                      "type": "string",
+                      "enum": [
+                        "manual",
+                        "newest",
+                        "title"
+                      ]
+                    },
+                    "limit": {
+                      "default": 12,
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 100
+                    }
+                  },
+                  "required": [
+                    "type",
+                    "collectionId",
+                    "view"
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "title",
+          "published",
+          "description",
+          "blocks"
+        ]
+      }
+    },
+    "collections": {
+      "maxItems": 100,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "name": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 120
+          },
+          "kind": {
+            "default": "content",
+            "type": "string",
+            "enum": [
+              "gallery",
+              "content"
+            ]
+          },
+          "listLayout": {
+            "default": "grid",
+            "type": "string",
+            "enum": [
+              "grid",
+              "list",
+              "masonry"
+            ]
+          },
+          "loading": {
+            "default": "show-more",
+            "type": "string",
+            "enum": [
+              "pagination",
+              "show-more"
+            ]
+          },
+          "pageSize": {
+            "default": 12,
+            "type": "integer",
+            "minimum": 4,
+            "maximum": 48
+          },
+          "presetId": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "routeBase": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "fields": {
+            "maxItems": 30,
+            "type": "array",
+            "items": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "text"
+                    },
+                    "format": {
+                      "default": "plain",
+                      "type": "string",
+                      "enum": [
+                        "plain",
+                        "rich"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "type"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "category"
+                    },
+                    "categories": {
+                      "maxItems": 15000,
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "format": "uuid",
+                            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                          },
+                          "slug": {
+                            "type": "string",
+                            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+                          },
+                          "name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "maxLength": 80
+                          }
+                        },
+                        "required": [
+                          "id",
+                          "slug",
+                          "name"
+                        ]
+                      }
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "type",
+                    "categories"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "gallery"
+                    },
+                    "maxItems": {
+                      "default": 20,
+                      "type": "integer",
+                      "minimum": 1,
+                      "maximum": 3000
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "type"
+                  ]
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "format": "uuid",
+                      "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+                    },
+                    "label": {
+                      "type": "string",
+                      "minLength": 1,
+                      "maxLength": 100
+                    },
+                    "type": {
+                      "type": "string",
+                      "const": "link"
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "label",
+                    "type"
+                  ]
+                }
+              ]
+            }
+          },
+          "excerptSourceFieldId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "routeBase",
+          "fields"
+        ]
+      }
+    },
+    "items": {
+      "maxItems": 500,
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "collectionId": {
+            "type": "string",
+            "format": "uuid",
+            "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+          },
+          "slug": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "published": {
+            "type": "boolean"
+          },
+          "title": {
+            "type": "string",
+            "maxLength": 200
+          },
+          "coverImage": {
+            "type": "object",
+            "properties": {
+              "src": {
+                "type": "string",
+                "pattern": "^\\/media\\/[a-f0-9-]+\\.webp$"
+              },
+              "alt": {
+                "type": "string",
+                "maxLength": 500
+              },
+              "title": {
+                "type": "string",
+                "maxLength": 500
+              }
+            },
+            "required": [
+              "src",
+              "alt"
+            ]
+          },
+          "description": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "string",
+                "enum": [
+                  "auto",
+                  "manual"
+                ]
+              },
+              "value": {
+                "type": "string",
+                "maxLength": 1000
+              }
+            },
+            "required": [
+              "source"
+            ]
+          },
+          "values": {
+            "type": "object",
+            "propertyNames": {
+              "type": "string",
+              "format": "uuid",
+              "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+            },
+            "additionalProperties": {}
+          }
+        },
+        "required": [
+          "id",
+          "collectionId",
+          "slug",
+          "published",
+          "description",
+          "values"
+        ]
+      }
+    }
+  },
+  "required": [
+    "version",
+    "site",
+    "pages",
+    "collections",
+    "items"
+  ]
+}

@@ -1,0 +1,48 @@
+plugins {
+    id 'com.android.application'
+}
+
+def configuredBuildDir = project.findProperty('studioAndroidBuildDir')
+if (configuredBuildDir) layout.buildDirectory.set(file(configuredBuildDir))
+def dashboardAssets = file(project.findProperty('studioAndroidAssetsDir') ?: 'src/main/assets/www')
+
+android {
+    namespace 'org.astross.studio'
+    compileSdk 36
+    defaultConfig {
+        applicationId 'org.astross.studio'
+        minSdk 24
+        targetSdk 36
+        versionCode 1
+        versionName '0.2.0'
+        buildConfigField 'String', 'GITHUB_APP_CLIENT_ID', '"' + (project.findProperty('studioGithubAppClientId') ?: '') + '"'
+        buildConfigField 'long', 'GITHUB_APP_ID', (project.findProperty('studioGithubAppId') ?: '0') + 'L'
+        buildConfigField 'String', 'SITE_TEMPLATE_OWNER', '"' + (project.findProperty('studioSiteTemplateOwner') ?: '') + '"'
+        buildConfigField 'String', 'SITE_TEMPLATE_REPO', '"' + (project.findProperty('studioSiteTemplateRepo') ?: '') + '"'
+        buildConfigField 'long', 'SITE_TEMPLATE_REPOSITORY_ID', (project.findProperty('studioSiteTemplateRepositoryId') ?: '0') + 'L'
+    }
+    buildFeatures { buildConfig true }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    sourceSets.main.assets.setSrcDirs([dashboardAssets.parentFile])
+    sourceSets.test.resources.srcDir(file('../../../packages/contracts'))
+    sourceSets.test.resources.srcDir(file('../../../tests'))
+}
+
+dependencies {
+    implementation 'androidx.webkit:webkit:1.14.0'
+    implementation 'commons-codec:commons-codec:1.23.0'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+}
+
+tasks.register('prepareDashboardAssets', Exec) {
+    workingDir projectDir.parentFile.parentFile.parentFile
+    commandLine 'node', 'experiments/android-launch/scripts/prepare-dashboard.mjs'
+    environment 'STUDIO_ANDROID_APP', 'true'
+    environment 'STUDIO_ADMIN_DIST_DIR', project.findProperty('studioAdminDistDir') ?: ''
+    environment 'STUDIO_ANDROID_ASSETS_DIR', dashboardAssets.absolutePath
+}
+tasks.named('preBuild').configure { dependsOn tasks.named('prepareDashboardAssets') }
