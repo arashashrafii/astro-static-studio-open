@@ -72,10 +72,19 @@ public final class GithubProjectClientTest {
 
     @Test public void installationPreflightIsReadOnlyAndReportsMissingInstallation()throws Exception{
         Fake fake=new Fake();fake.add(200,new JSONObject().put("total_count",0).put("installations",new JSONArray()));
-        try{client(fake).checkCurrentInstallation("test-token","octocat",1);fail("missing installation must be reported");}
-        catch(GithubProjectClient.ApiException error){assertEquals(403,error.status);assertTrue(error.getMessage().contains("no installation of this app"));assertFalse(error.getMessage().contains("test-token"));}
+        GithubProjectClient client=client(fake);
+        try{client.checkCurrentInstallation("test-token","octocat",1);fail("missing installation must be reported");}
+        catch(GithubProjectClient.ApiException error){assertEquals(403,error.status);assertTrue(error.getMessage().contains("no installation of this app"));assertTrue(error.diagnostics,error.diagnostics.contains("total_count=0; returned=0; complete=true; app_matches=0; account_matches=0"));assertTrue(error.diagnostics,error.diagnostics.contains("repository_creation_write=unknown; contents_write=unknown"));assertTrue(error.diagnostics,error.diagnostics.contains("suspended=unknown"));assertFalse(error.getMessage().contains("test-token"));assertFalse(error.diagnostics.contains("test-token"));}
         assertEquals(1,fake.calls.size());assertTrue(fake.calls.get(0).startsWith("GET https://api.github.com/user/installations?per_page=100"));
         assertFalse(fake.calls.toString().contains("POST "));assertFalse(fake.calls.toString().contains("PUT "));
+    }
+
+    @Test public void incompleteInstallationPaginationIsNotReportedAsMissingInstall()throws Exception{
+        Fake fake=new Fake();fake.add(200,new JSONObject().put("total_count",101).put("installations",new JSONArray().put(new JSONObject().put("app_id",TEST_APP_ID))));
+        GithubProjectClient client=client(fake);
+        try{client.checkCurrentInstallation("test-token","octocat",1);fail("incomplete list must fail closed");}
+        catch(GithubProjectClient.ApiException error){assertTrue(error.getMessage().contains("complete installation list"));assertTrue(error.diagnostics.contains("total_count=101; returned=1; complete=false"));assertTrue(error.diagnostics.contains("app_matches=unknown; account_matches=unknown"));}
+        assertEquals(1,fake.calls.size());assertFalse(fake.calls.toString().contains("POST "));
     }
 
     @Test public void installationPreflightReportsOnlyVerifiedAccountPermissions()throws Exception{
@@ -98,7 +107,7 @@ public final class GithubProjectClientTest {
                 .put("app_id",TEST_APP_ID).put("account",new JSONObject().put("login","octocat").put("id",1))
                 .put("permissions",new JSONObject().put("repository_creation","write").put("contents","read")))));
         try{client(fake).createPrivate("test-token","octocat","my-site");fail("missing Contents write must stop before create");}
-        catch(GithubProjectClient.ApiException error){assertEquals(403,error.status);assertTrue(error.getMessage().contains("lacks Contents: write"));}
+        catch(GithubProjectClient.ApiException error){assertEquals(403,error.status);assertTrue(error.getMessage().contains("lacks Contents: write"));assertTrue(error.diagnostics.contains("repository_creation_write=true; contents_write=false"));}
         assertEquals(2,fake.calls.size());assertFalse(fake.calls.toString().contains("POST "));
     }
 

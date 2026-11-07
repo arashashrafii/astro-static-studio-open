@@ -229,7 +229,10 @@ public final class MainActivity extends Activity {
         });}
         void checkInstallation(String requestId,JavaScriptReplyProxy reply){projectOperation(requestId,reply,ticket->{
             String access=validAccessToken(ticket);
-            String result=projectClient(ticket).checkCurrentInstallation(access,login,userId);
+            GithubProjectClient client=projectClient(ticket);
+            final String result;
+            try{result=client.checkCurrentInstallation(access,login,userId);if(BuildConfig.DEBUG)android.util.Log.d("StudioInstallCheck",client.installationDiagnostics());}
+            catch(Exception error){if(BuildConfig.DEBUG&&error instanceof GithubProjectClient.ApiException){String details=((GithubProjectClient.ApiException)error).diagnostics;if(!details.isEmpty())android.util.Log.d("StudioInstallCheck",details);}throw error;}
             return new JSONObject().put("message",result);
         });}
         void saveContent(JSONObject content,String expectedSha,String requestId,JavaScriptReplyProxy reply){projectOperation(requestId,reply,ticket->{

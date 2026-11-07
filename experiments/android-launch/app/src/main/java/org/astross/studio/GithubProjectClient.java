@@ -35,7 +35,9 @@ final class GithubProjectClient {
     }
     static final class ApiException extends Exception {
         final int status;
-        ApiException(int status,String message){super(message);this.status=status;}
+        final String diagnostics;
+        ApiException(int status,String message){this(status,message,"");}
+        ApiException(int status,String message,String diagnostics){super(message);this.status=status;this.diagnostics=diagnostics==null?"":diagnostics;}
     }
     static final class ConflictException extends Exception {
         final Content remote;
@@ -48,6 +50,7 @@ final class GithubProjectClient {
     private final long expectedAppId;
     private final String templateOwner,templateRepo;
     private final long templateRepositoryId;
+    private volatile String installationDiagnostics="";
     GithubProjectClient(){this(new HttpTransport(),()->true,classpathValidator(),BuildConfig.GITHUB_APP_ID,BuildConfig.SITE_TEMPLATE_OWNER,BuildConfig.SITE_TEMPLATE_REPO,BuildConfig.SITE_TEMPLATE_REPOSITORY_ID);}
     GithubProjectClient(Transport transport){this(transport,()->true,classpathValidator(),BuildConfig.GITHUB_APP_ID,BuildConfig.SITE_TEMPLATE_OWNER,BuildConfig.SITE_TEMPLATE_REPO,BuildConfig.SITE_TEMPLATE_REPOSITORY_ID);}
     GithubProjectClient(RequestGuard guard){this(new HttpTransport(),guard,classpathValidator(),BuildConfig.GITHUB_APP_ID,BuildConfig.SITE_TEMPLATE_OWNER,BuildConfig.SITE_TEMPLATE_REPO,BuildConfig.SITE_TEMPLATE_REPOSITORY_ID);}
@@ -95,6 +98,7 @@ final class GithubProjectClient {
         validateLogin(login);if(ownerId<=0)throw new IllegalArgumentException("Verified GitHub account ID is required.");
         return verifyCurrentInstallation(token,login,ownerId);
     }
+    String installationDiagnostics(){return installationDiagnostics;}
 
     /** Verifies pinned immutable ID and private ownership on every operation. */
     Binding verify(Binding binding,String token,String login)throws Exception{return verify(binding,token,login,binding.ownerId);}
@@ -171,23 +175,31 @@ final class GithubProjectClient {
     private static String repoUrl(Binding binding){return "https://api.github.com/repos/"+binding.owner+"/"+binding.name;}
     private static String contentUrl(Binding binding){return repoUrl(binding)+"/contents/"+CONTENT_PATH;}
     private String verifyCurrentInstallation(String token,String login,long ownerId)throws Exception{
+        installationDiagnostics="";
         if(expectedAppId<=0)throw new ApiException(0,"The GitHub App ID is not configured for this build; no repository was created.");
         Response response=request("GET",USER_INSTALLATIONS_URL,token,null);
         if(response.status<200||response.status>=300)throw apiError(response,"Could not verify this app's installation on the signed-in GitHub account. No repository was created.");
         JSONArray installations=response.json.optJSONArray("installations");int total=response.json.optInt("total_count",-1);
-        if(installations==null||total<0||total>installations.length())throw new ApiException(0,"GitHub did not return a complete installation list. No repository was created.");
-        JSONObject match=null;
+        if(installations==null||total<0||total>installations.length()){
+            int returned=installations==null?0:installations.length();installationDiagnostics="total_count="+total+"; returned="+returned+"; complete=false; app_matches=unknown; account_matches=unknown; repository_creation_write=unknown; contents_write=unknown; suspended=unknown";
+            throw new ApiException(0,"GitHub did not return a complete installation list. No repository was created.",installationDiagnostics);
+        }
+        JSONObject match=null;int appMatches=0,accountMatches=0;
         for(int index=0;index<installations.length();index++){
-            JSONObject installation=installations.optJSONObject(index);if(installation!=null&&installation.optLong("app_id",0)==expectedAppId){
+            JSONObject installation=installations.optJSONObject(index);if(installation!=null&&installation.optLong("app_id",0)==expectedAppId){appMatches++;
                 JSONObject account=installation.optJSONObject("account");
-                if(account!=null&&account.optLong("id",0)==ownerId&&account.optString("login","").equalsIgnoreCase(login))match=installation;
+                if(account!=null&&account.optLong("id",0)==ownerId&&account.optString("login","").equalsIgnoreCase(login)){match=installation;accountMatches++;}
             }
         }
-        if(match==null)throw new ApiException(403,"This GitHub account has no installation of this app. Install and approve the app for this account before creating a repository.");
-        JSONObject permissions=match.optJSONObject("permissions");
-        if(permissions==null)throw new ApiException(0,"GitHub did not return this app installation's permissions. No repository was created.");
-        if(!"write".equals(permissions.optString("repository_creation","")))throw new ApiException(403,"This GitHub app installation lacks Repository creation: write. Approve the updated permission in GitHub before creating a repository.");
-        if(!"write".equals(permissions.optString("contents","")))throw new ApiException(403,"This GitHub app installation lacks Contents: write. Approve the updated permission in GitHub before creating or saving project content.");
+        String suspended="unknown";if(match!=null&&match.has("suspended_at"))suspended=match.isNull("suspended_at")?"false":"true";
+        JSONObject permissions=match==null?null:match.optJSONObject("permissions");
+        String repositoryCreationWrite=permissions==null?"unknown":String.valueOf("write".equals(permissions.optString("repository_creation","")));
+        String contentsWrite=permissions==null?"unknown":String.valueOf("write".equals(permissions.optString("contents","")));
+        installationDiagnostics="total_count="+total+"; returned="+installations.length()+"; complete=true; app_matches="+appMatches+"; account_matches="+accountMatches+"; suspended="+suspended+"; repository_creation_write="+repositoryCreationWrite+"; contents_write="+contentsWrite;
+        if(match==null)throw new ApiException(403,"This GitHub account has no installation of this app. Install and approve the app for this account before creating a repository.",installationDiagnostics);
+        if(permissions==null)throw new ApiException(0,"GitHub did not return this app installation's permissions. No repository was created.",installationDiagnostics);
+        if(!"write".equals(permissions.optString("repository_creation","")))throw new ApiException(403,"This GitHub app installation lacks Repository creation: write. Approve the updated permission in GitHub before creating a repository.",installationDiagnostics);
+        if(!"write".equals(permissions.optString("contents","")))throw new ApiException(403,"This GitHub app installation lacks Contents: write. Approve the updated permission in GitHub before creating or saving project content.",installationDiagnostics);
         return "installation verified; Repository creation: write; Contents: write";
     }
 
